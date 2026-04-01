@@ -865,7 +865,7 @@ const CourseLanding = () => {
         )}>
           <a href="/" className="inline-flex items-center gap-2.5 text-xl font-bold tracking-tight text-white/90 hover:text-white transition-colors">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-sm font-black shadow-lg shadow-blue-500/20 text-white">S</div>
-            Skilyapp
+            Sdadim
           </a>
 
           <div className="flex items-center gap-4">
@@ -920,7 +920,7 @@ const CourseLanding = () => {
               <div className="flex items-center justify-between mb-8">
                 <a href="/" className="inline-flex items-center gap-2.5 text-xl font-bold tracking-tight text-white/90">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-sm font-black shadow-lg shadow-blue-500/20 text-white">S</div>
-                  Skilyapp
+                  Sdadim
                 </a>
                 <button
                   onClick={() => setMobileMenuOpen(false)}

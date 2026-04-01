@@ -164,19 +164,6 @@ export function CinematicHero({
       </div>
       
       {/* 3. INTEGRATED FOOTER LINKS */}
-      <div className="w-full px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5 bg-[#050B14]/40 z-20 mt-auto backdrop-blur-sm">
-        <div className="flex items-center gap-2 text-sm font-semibold text-zinc-400">
-          <div className="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-[10px] font-black text-white">S</div>
-          Skilyapp
-        </div>
-        <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm text-zinc-500">
-          <a href="/legal/terms" className="hover:text-white transition-colors">Оферта</a>
-          <a href="/legal/privacy" className="hover:text-white transition-colors">Конфиденциальность</a>
-        </div>
-        <div className="text-[10px] sm:text-xs text-zinc-600">
-          &copy; {new Date().getFullYear()} Skilyapp. Все права защищены.
-        </div>
-      </div>
     </div>
   );
 }

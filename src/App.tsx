@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -17,10 +17,13 @@ function PageLoader() {
   );
 }
 
-export default function App() {
+function LayoutContent() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
-    <BrowserRouter>
-      <Header />
+    <>
+      {!isHome && <Header />}
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -32,6 +35,14 @@ export default function App() {
         </Routes>
       </Suspense>
       <Footer />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <LayoutContent />
     </BrowserRouter>
   );
 }
