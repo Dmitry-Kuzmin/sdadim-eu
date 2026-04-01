@@ -14,11 +14,12 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-2 font-black text-base text-white mb-2">
-              <div className="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-[10px] font-black text-white">
-                С
+            <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity mb-3">
+              <img src="/favicon-s.svg" alt="Sdadim" className="w-8 h-8 rounded-[22%] shadow-lg shadow-blue-500/20" />
+              <div className="flex flex-col">
+                <span className="text-lg font-bold tracking-tight text-white/90 leading-none">Sdadim</span>
+                <span className="text-[9px] text-zinc-400 font-bold tracking-[0.1em] leading-tight uppercase mt-0.5">by Skilyapp</span>
               </div>
-              Сдадим
             </Link>
             <p className="text-xs text-zinc-600 max-w-xs">
               Онлайн-курс подготовки к теоретическому экзамену DGT в Испании.

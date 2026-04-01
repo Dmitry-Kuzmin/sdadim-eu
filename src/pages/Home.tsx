@@ -863,9 +863,12 @@ const CourseLanding = () => {
           "relative z-50 flex items-center justify-between w-full px-6 py-6 md:px-10 max-w-[1325px] mx-auto transition-all duration-700",
           heroReady ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
         )}>
-          <a href="/" className="inline-flex items-center gap-2.5 text-xl font-bold tracking-tight text-white/90 hover:text-white transition-colors">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-sm font-black shadow-lg shadow-blue-500/20 text-white">S</div>
-            Sdadim
+          <a href="/" className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
+            <img src="/favicon-s.svg" alt="Sdadim" className="w-8 h-8 rounded-[22%] shadow-lg shadow-blue-500/20" />
+            <div className="flex flex-col">
+              <span className="text-xl font-bold tracking-tight text-white/90 leading-none">Sdadim</span>
+              <span className="text-[9px] text-zinc-400 font-bold tracking-[0.1em] leading-tight uppercase mt-0.5 relative top-[1px]">by Skilyapp</span>
+            </div>
           </a>
 
           <div className="flex items-center gap-4">
@@ -918,9 +921,12 @@ const CourseLanding = () => {
               className="absolute top-0 left-0 w-full z-[100] bg-[#060a14]/95 backdrop-blur-3xl border-b border-white/10 px-6 py-8 shadow-2xl flex flex-col h-auto"
             >
               <div className="flex items-center justify-between mb-8">
-                <a href="/" className="inline-flex items-center gap-2.5 text-xl font-bold tracking-tight text-white/90">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-sm font-black shadow-lg shadow-blue-500/20 text-white">S</div>
-                  Sdadim
+                <a href="/" className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
+                  <img src="/favicon-s.svg" alt="Sdadim" className="w-8 h-8 rounded-[22%] shadow-lg shadow-blue-500/20" />
+                  <div className="flex flex-col">
+                    <span className="text-xl font-bold tracking-tight text-white/90 leading-none">Sdadim</span>
+                    <span className="text-[9px] text-zinc-400 font-bold tracking-[0.1em] leading-tight uppercase mt-0.5 relative top-[1px]">by Skilyapp</span>
+                  </div>
                 </a>
                 <button
                   onClick={() => setMobileMenuOpen(false)}

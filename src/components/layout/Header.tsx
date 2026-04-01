@@ -16,11 +16,12 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#050B14]/80 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 font-black text-lg tracking-tight text-white hover:opacity-80 transition-opacity">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-[11px] font-black text-white">
-            С
+        <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+          <img src="/favicon-s.svg" alt="Sdadim" className="w-8 h-8 rounded-[22%] shadow-lg shadow-blue-500/20" />
+          <div className="flex flex-col">
+            <span className="text-xl font-bold tracking-tight text-white/90 leading-none">Sdadim</span>
+            <span className="text-[9px] text-zinc-400 font-bold tracking-[0.1em] leading-tight uppercase mt-0.5">by Skilyapp</span>
           </div>
-          Сдадим
         </Link>
 
         {/* Desktop nav */}
