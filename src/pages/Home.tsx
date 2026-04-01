@@ -116,53 +116,54 @@ const LANDING_STYLES = `
    ───────────────────────────────────────────── */
 
 const HERO_STATS = [
-  { value: 9, suffix: "/10", label: "сдают с 1-го раза" },
-  { value: 16000, suffix: "+", label: "вопросов в базе" },
-  { value: 100, suffix: "%", label: "онлайн-формат" },
+  { value: 9, suffix: "/10", label: "сдают с 1-й попытки" },
+  { value: 2, suffix: " мес", label: "средний срок подготовки" },
+  { value: 16000, suffix: "+", label: "вопросов DGT в базе" },
 ];
 
 const TRUST_PILLS = [
-  { text: "Живой курс: 2 месяца", icon: Clock },
-  { text: "Оформление документов под ключ", icon: FileText },
-  { text: "Зачет стажа из стран СНГ", icon: BadgeCheck },
+  { text: "Только русский язык", icon: Globe },
+  { text: "Cita + Tasa — помогаем оформить", icon: FileText },
+  { text: "Без автошколы на теорию", icon: BadgeCheck },
+  { text: "Живые уроки 2 раза в неделю", icon: Clock },
 ];
 
 const PAIN_POINTS = [
   {
     icon: Globe,
     color: "from-red-500 to-orange-500",
-    title: "Языковой барьер",
-    desc: "Специфическая лексика и сложные формулировки на испанском, которые не переведет обычный переводчик.",
+    title: "Экзамен — на испанском",
+    desc: "Вопросы DGT переполнены юридической лексикой. Гугл-переводчик не поможет — нужно понимать логику, а не слова.",
   },
   {
     icon: BookOpen,
     color: "from-amber-500 to-yellow-500",
-    title: "16 000+ вопросов",
-    desc: "Огромная база DGT с подвохами. Без системы подготовки можно учить месяцами и всё равно провалить.",
+    title: "16 000 вопросов с ловушками",
+    desc: "Официальная база DGT — 30 вопросов на экзамене, максимум 3 ошибки. Без системы подготовки шансы 50/50.",
   },
   {
     icon: FileText,
     color: "from-purple-500 to-pink-500",
-    title: "Бюрократия",
-    desc: "Очереди, получение Cita Previa, оплата Tasa, медкомиссия — система запутает кого угодно.",
+    title: "Бюрократия с нуля",
+    desc: "Cita Previa, Tasa DGT, психотехнический тест, TIE — каждый шаг может застопорить, если не знать порядок.",
   },
 ];
 
 const ADVANTAGES = [
   {
-    icon: Clock,
-    title: "Учитесь где угодно 24/7",
-    desc: "За утренним кофе, в метро или на диване. Не нужно подстраиваться под расписание офлайн-школ.",
-  },
-  {
     icon: Brain,
-    title: "Сложное — простым языком",
-    desc: "Перевели всю терминологию DGT на понятный русский язык. Объясняем ПДД, а не заставляем зубрить.",
+    title: "Объясняем логику, не заставляем зубрить",
+    desc: "Преподаватели разбирают каждую тему на русском — вы понимаете правила, а не запоминаете ответы.",
   },
   {
-    icon: Stethoscope,
-    title: "Тесты по официальной базе",
-    desc: "Более 16.000 актуальных вопросов от Генерального управления транзитом (DGT).",
+    icon: Clock,
+    title: "Готовьтесь в своём ритме",
+    desc: "Живые уроки 2 раза в неделю + записи навсегда. Работаете посменно — не проблема.",
+  },
+  {
+    icon: FileText,
+    title: "Документы — под ключ",
+    desc: "Cita Previa, оплата Tasa DGT, запись на психотехнику — куратор ведёт через каждый шаг.",
   },
 ];
 
@@ -826,6 +827,26 @@ const CourseLanding = () => {
     return () => { document.getElementById("curso-styles")?.remove(); };
   }, []);
 
+  useEffect(() => {
+    const allFaqs = Object.values(NEW_FAQ_DATA).flat();
+    const ldFaq = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: allFaqs.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    };
+    const s = document.createElement("script");
+    s.id = "ld-faq";
+    s.type = "application/ld+json";
+    s.text = JSON.stringify(ldFaq);
+    document.getElementById("ld-faq")?.remove();
+    document.head.appendChild(s);
+    return () => { document.getElementById("ld-faq")?.remove(); };
+  }, []);
+
   const scrollToForm = (location = "unknown") => {
     Analytics.ctaClicked(location);
     document.getElementById("smart-checklist")?.scrollIntoView({ behavior: "smooth" });
@@ -838,9 +859,9 @@ const CourseLanding = () => {
   return (
     <div className="min-h-screen bg-[#060a14] text-white antialiased selection:bg-blue-500/30">
       <SeoHead
-        title="Водительские права в Испании — сдайте теорию DGT с первого раза | Skilyapp"
-        description="Запись на живой онлайн-курс по теории DGT на русском языке. 9 из 10 сдают с первой попытки. Полное сопровождение: от документов до получения прав."
-        canonicalUrl="https://skilyapp.com/curso"
+        title="Водительские права в Испании — теория DGT с первого раза | Сдадим"
+        description="Онлайн-курс подготовки к теоретическому экзамену DGT на русском языке. 9 из 10 студентов сдают с первой попытки. Куратор, документы, разбор 16 000 вопросов DGT."
+        canonicalUrl="https://sdadim.eu/"
       />
 
       {/* ═══════════════════════════════════════════
@@ -1016,10 +1037,10 @@ const CourseLanding = () => {
             "max-w-4xl mx-auto text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold leading-[1.1] tracking-tight mb-6 transition-all duration-700 delay-200",
             heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}>
-            Сдаем теорию DGT.
+            Водительские права в Испании —
             <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent curso-gradient-x sm:mt-2 inline-block">
-              Вместе и с первой попытки.
+              теория DGT с первого раза.
             </span>
           </h1>
 
@@ -1028,7 +1049,7 @@ const CourseLanding = () => {
             "max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-zinc-400 mb-10 leading-relaxed transition-all duration-700 delay-300 font-medium",
             heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}>
-            Забудьте про страх перед испанской бюрократией и терминологией. Получите доступ к премиальному курсу, где вас будут сопровождать от первого урока до успешной сдачи экзамена в Trafico.
+            Живой курс на русском языке: объясняем ПДД, разбираем все 16 000 вопросов DGT и помогаем с документами — от Cita Previa до получения удостоверения.
           </p>
 
           {/* CTA buttons */}
@@ -1137,10 +1158,10 @@ const CourseLanding = () => {
               Специальное предложение потока
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 tracking-tight px-2">
-              Выберите свой формат
+              Выберите свой формат подготовки
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-2xl mx-auto font-light px-4">
-              Все тарифы включают 2 месяца живых занятий и доступ к платформе Skilyapp в подарок
+              Все тарифы включают 2 месяца живых занятий и доступ к тренажёру SkilyApp с полной базой DGT
             </p>
           </div>
 
@@ -1176,34 +1197,18 @@ const CourseLanding = () => {
           </div>
 
           <div className="relative min-h-[600px]">
-            <AnimatePresence mode="wait">
-              {pricingTab === "groups" ? (
-                <motion.div
-                  key="pricing-groups"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <PricingCards onBooking={() => scrollToForm("pricing_groups")} dbPrices={dbPrices} />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="pricing-individual"
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -10 }}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <IndividualPricingCards
-                    onBooking={() => scrollToForm("pricing_individual")}
-                    mgBasePrice={dbPrices?.mini_group?.price_eur ?? 499}
-                    indBasePrice={dbPrices?.individual?.price_eur ?? 799}
-                    addons={dbAddons}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div className={pricingTab === "groups" ? "block animate-in fade-in zoom-in-95 duration-300" : "hidden"}>
+              <PricingCards onBooking={() => scrollToForm("pricing_groups")} dbPrices={dbPrices} />
+            </div>
+            
+            <div className={pricingTab === "individual" ? "block animate-in fade-in zoom-in-95 duration-300" : "hidden"}>
+              <IndividualPricingCards
+                onBooking={() => scrollToForm("pricing_individual")}
+                mgBasePrice={dbPrices?.mini_group?.price_eur ?? 499}
+                indBasePrice={dbPrices?.individual?.price_eur ?? 799}
+                addons={dbAddons}
+              />
+            </div>
           </div>
 
           {/* Trust footer */}
@@ -1253,10 +1258,10 @@ const CourseLanding = () => {
               Отзывы
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 tracking-tight px-2 text-center">
-              Наши ученики уже за рулём
+              Русскоязычные в Испании уже сдали
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-2xl mx-auto font-light px-4 text-center">
-              Реальные люди из разных городов Испании — разный возраст, разные обстоятельства, один результат.
+              Барселона, Мадрид, Аликанте, Малага — разный возраст и уровень испанского, один результат.
             </p>
           </motion.div>
         </div>
