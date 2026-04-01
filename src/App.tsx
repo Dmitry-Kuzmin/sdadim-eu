@@ -14,6 +14,7 @@ const ArticleFakeLicense = lazy(() => import("@/pages/ArticleFakeLicense"));
 const ArticlePractical = lazy(() => import("@/pages/ArticlePractical"));
 const ArticleDictionary = lazy(() => import("@/pages/ArticleDictionary"));
 const ArticleCosts = lazy(() => import("@/pages/ArticleCosts"));
+const ArticleExamErrors = lazy(() => import("@/pages/ArticleExamErrors"));
 
 function PageLoader() {
   return (
@@ -43,6 +44,7 @@ function LayoutContent() {
           <Route path="/blog/prakticheskiy-ekzamen" element={<ArticlePractical />} />
           <Route path="/blog/slovar-dgt" element={<ArticleDictionary />} />
           <Route path="/blog/tseny-na-prava" element={<ArticleCosts />} />
+          <Route path="/blog/oshibki-ekzamen-vozhdeniya" element={<ArticleExamErrors />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

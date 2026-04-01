@@ -1283,7 +1283,174 @@ const CourseLanding = () => {
       </div>
 
       {/* ═══════════════════════════════════════════
-          BLOCK 8: FAQ
+          BLOCK 8: BLOG — Последние статьи
+          ═══════════════════════════════════════════ */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-500/[0.025] rounded-full blur-[150px]" />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <div className="inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/15 text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">
+              Блог
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+              Полезные статьи
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-2xl mx-auto font-light">
+              Разбираем экзамен DGT, ошибки, стоимость и лайфхаки — всё на русском языке
+            </p>
+          </motion.div>
+
+          {/* Cards grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              {
+                slug: "oshibki-ekzamen-vozhdeniya",
+                title: "Все ошибки на экзамене по вождению DGT",
+                excerpt: "Полная таблица штрафных баллов: leves, deficientes, eliminatorias. 14 разделов оценки с практическими советами.",
+                category: "Подготовка",
+                readingTime: 18,
+                date: "1 апреля 2026",
+                gradient: "from-red-600/10 to-orange-600/5",
+                accent: "text-red-400 bg-red-500/10",
+              },
+              {
+                slug: "prakticheskiy-ekzamen",
+                title: "Как сдать практику с первого раза",
+                excerpt: "Секреты экзаменатора, ловушки на маршруте и психология успешной сдачи — от проверки масла до парковки.",
+                category: "Подготовка",
+                readingTime: 10,
+                date: "3 апреля 2025",
+                gradient: "from-amber-600/10 to-yellow-600/5",
+                accent: "text-amber-400 bg-amber-500/10",
+              },
+              {
+                slug: "tseny-na-prava",
+                title: "Сколько на самом деле стоят права в Испании",
+                excerpt: "Разбираем все расходы: от таксы DGT до скрытых платежей автошкол. Калькулятор стоимости внутри.",
+                category: "Гайды",
+                readingTime: 12,
+                date: "10 марта 2025",
+                gradient: "from-emerald-600/10 to-teal-600/5",
+                accent: "text-emerald-400 bg-emerald-500/10",
+              },
+              {
+                slug: "poddelnyye-prava-ispaniya",
+                title: "Поддельные права в Испании: последствия",
+                excerpt: "Что грозит за езду без прав или с поддельным удостоверением — штрафы, уголовная ответственность и депортация.",
+                category: "Актуально",
+                readingTime: 8,
+                date: "15 февраля 2025",
+                gradient: "from-purple-600/10 to-violet-600/5",
+                accent: "text-purple-400 bg-purple-500/10",
+              },
+              {
+                slug: "ekonomichnoe-vozhdenie",
+                title: "13 техник экономичного вождения",
+                excerpt: "Как экономить топливо и сдать вопросы DGT про расход — научный подход к эко-вождению.",
+                category: "Советы",
+                readingTime: 9,
+                date: "20 января 2025",
+                gradient: "from-cyan-600/10 to-blue-600/5",
+                accent: "text-cyan-400 bg-cyan-500/10",
+              },
+              {
+                slug: "slovar-dgt",
+                title: "Словарик будущего водителя",
+                excerpt: "Все ключевые термины DGT с переводом на русский: от «adelantamiento» до «zona de frenado».",
+                category: "Гайды",
+                readingTime: 7,
+                date: "5 января 2025",
+                gradient: "from-blue-600/10 to-indigo-600/5",
+                accent: "text-blue-400 bg-blue-500/10",
+              },
+            ].map((post, i) => (
+              <motion.div
+                key={post.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true }}
+              >
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="group block rounded-2xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/12 transition-all duration-300"
+                >
+                  {/* Gradient top */}
+                  <div className={cn("h-1.5 rounded-t-2xl bg-gradient-to-r", post.gradient)} />
+
+                  <div className="p-5">
+                    {/* Meta */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className={cn("text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full", post.accent)}>
+                        {post.category}
+                      </span>
+                      <span className="flex items-center gap-1 text-[11px] text-zinc-600">
+                        <Clock className="w-3 h-3" /> {post.readingTime} мин
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-[15px] font-bold text-white group-hover:text-blue-300 transition-colors leading-snug mb-2 line-clamp-2">
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p className="text-[12px] text-zinc-500 leading-relaxed line-clamp-3 mb-4">
+                      {post.excerpt}
+                    </p>
+
+                    {/* Footer */}
+                    <div className="flex items-center justify-between pt-3 border-t border-white/5">
+                      <span className="text-[11px] text-zinc-600">{post.date}</span>
+                      <span className="flex items-center gap-1 text-[11px] text-zinc-500 group-hover:text-blue-400 transition-colors font-medium">
+                        Читать <ArrowRight className="w-3 h-3" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center mt-10"
+          >
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors font-medium group"
+            >
+              Все статьи блога
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────
+          DIVIDER
+          ───────────────────────────────────────────── */}
+      <div className="relative w-full h-px max-w-[1325px] mx-auto my-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-[2px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent blur-[2px]" />
+      </div>
+
+      {/* ═══════════════════════════════════════════
+          BLOCK 9: FAQ
           ═══════════════════════════════════════════ */}
       <FAQ
         id="faq"
