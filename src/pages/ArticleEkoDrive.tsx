@@ -22,6 +22,7 @@ import {
   ArticleComparison,
   ArticleSpoiler,
 } from "@/components/ui/article";
+import { ArticleQuizBlock, ECO_DRIVING_QUESTIONS } from "@/components/ui/article-quiz";
 
 // ─── SEO ──────────────────────────────────────────────────────────────────────
 
@@ -431,6 +432,21 @@ export default function ArticleEkoDrive() {
                 </div>
               </div>
             </ArticleSpoiler>
+
+            {/* ── МИНИ-ТЕСТ DGT ── */}
+            <h2 id="mini-test" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+              Мини-тест: проверь, понял ли ты тему
+            </h2>
+            <p className="text-[15px] text-zinc-300 leading-[1.85] mb-0">
+              Пять реальных вопросов DGT по eco-driving. После каждого ответа — разбор AI-тренера.
+              Именно такие формулировки встречаются на экзамене.
+            </p>
+
+            <ArticleQuizBlock
+              questions={ECO_DRIVING_QUESTIONS}
+              title="Тест DGT · Экономичное вождение"
+              subtitle="5 реальных вопросов · AI-разбор после каждого ответа"
+            />
 
             {/* Итоговый чеклист */}
             <h2 id="chekList" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
