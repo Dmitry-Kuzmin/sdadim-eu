@@ -8,6 +8,7 @@ const Blog = lazy(() => import("@/pages/Blog"));
 const Article = lazy(() => import("@/pages/Article"));
 const Legal = lazy(() => import("@/pages/Legal"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
+const ArticleKitDemo = lazy(() => import("@/pages/ArticleKitDemo"));
 
 function PageLoader() {
   return (
@@ -31,6 +32,7 @@ function LayoutContent() {
           <Route path="/blog/:slug" element={<Article />} />
           <Route path="/legal" element={<Navigate to="/legal/terms" replace />} />
           <Route path="/legal/:tab" element={<Legal />} />
+          <Route path="/blog/kit" element={<ArticleKitDemo />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
