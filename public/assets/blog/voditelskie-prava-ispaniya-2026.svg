@@ -1,0 +1,172 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#050B14"/>
+      <stop offset="100%" stop-color="#080F1C"/>
+    </linearGradient>
+    <!-- Blue glow -->
+    <radialGradient id="blueGlow" cx="30%" cy="55%" r="50%" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E40AF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#050B14" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Red glow (Spain) -->
+    <radialGradient id="redGlow" cx="80%" cy="30%" r="40%" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C0392B" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#050B14" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Card gradient -->
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="480" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F1E38"/>
+      <stop offset="100%" stop-color="#0A1425"/>
+    </linearGradient>
+    <!-- Road gradient -->
+    <linearGradient id="roadGrad" x1="600" y1="400" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a1a2e" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0d0d1a" stop-opacity="1"/>
+    </linearGradient>
+    <!-- Filter for card glow -->
+    <filter id="cardGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#blueGlow)"/>
+  <rect width="1200" height="630" fill="url(#redGlow)"/>
+
+  <!-- Road perspective (bottom right) -->
+  <g opacity="0.4">
+    <polygon points="520,630 680,630 1200,420 1200,370" fill="url(#roadGrad)"/>
+    <!-- Road markings -->
+    <line x1="680" y1="630" x2="1100" y2="430" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="30,20" opacity="0.15"/>
+    <line x1="730" y1="630" x2="1150" y2="430" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="30,20" opacity="0.08"/>
+  </g>
+
+  <!-- Subtle grid lines -->
+  <g opacity="0.04" stroke="#4A90E2" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Driver's license card (right side) -->
+  <g transform="translate(640, 140) rotate(-8)">
+    <!-- Card shadow -->
+    <rect x="8" y="12" width="460" height="290" rx="18" fill="#000000" opacity="0.5"/>
+    <!-- Card body -->
+    <rect width="460" height="290" rx="18" fill="url(#cardGrad)"/>
+    <rect width="460" height="290" rx="18" fill="none" stroke="#1E40AF" stroke-width="1.5" stroke-opacity="0.6"/>
+    <!-- Card top stripe - EU Blue -->
+    <rect width="460" height="52" rx="18" fill="#003399"/>
+    <rect y="34" width="460" height="18" fill="#003399"/>
+    <!-- EU Stars row -->
+    <text x="20" y="37" fill="#FFCC00" font-size="13" font-family="Arial" letter-spacing="8">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</text>
+    <!-- EU / E label -->
+    <text x="20" y="16" fill="#FFFFFF" font-size="10" font-family="Arial" font-weight="700" letter-spacing="1">UNIÓN EUROPEA</text>
+    <text x="388" y="16" fill="#FFFFFF" font-size="9" font-family="Arial" font-weight="700">E</text>
+    <!-- PERMISO DE CONDUCCIÓN -->
+    <text x="20" y="70" fill="#FFFFFF" font-size="14" font-family="Arial" font-weight="700" letter-spacing="0.5">PERMISO DE CONDUCCIÓN</text>
+    <!-- Photo placeholder -->
+    <rect x="20" y="82" width="75" height="95" rx="6" fill="#0D1F3A"/>
+    <rect x="20" y="82" width="75" height="95" rx="6" fill="none" stroke="#2E4A7A" stroke-width="1"/>
+    <!-- Silhouette in photo -->
+    <circle cx="57" cy="110" r="18" fill="#1E3A5F"/>
+    <path d="M26,177 Q57,145 88,177" fill="#1E3A5F"/>
+    <!-- Fields -->
+    <text x="108" y="98" fill="#8BA3C4" font-size="8" font-family="Arial">1. Apellidos / Фамилия</text>
+    <text x="108" y="113" fill="#FFFFFF" font-size="12" font-family="Arial" font-weight="600">ИВАНОВА</text>
+    <text x="108" y="130" fill="#8BA3C4" font-size="8" font-family="Arial">2. Nombre / Имя</text>
+    <text x="108" y="145" fill="#FFFFFF" font-size="12" font-family="Arial" font-weight="600">МАРИЯ</text>
+    <text x="108" y="162" fill="#8BA3C4" font-size="8" font-family="Arial">5. Número / NIE</text>
+    <text x="108" y="176" fill="#FFFFFF" font-size="10" font-family="Arial" font-weight="600">X-1234567-Z</text>
+    <!-- Category B badge -->
+    <rect x="108" y="190" width="44" height="34" rx="6" fill="#1E40AF"/>
+    <text x="130" y="213" fill="#FFFFFF" font-size="20" font-family="Arial" font-weight="900" text-anchor="middle">B</text>
+    <rect x="160" y="190" width="50" height="34" rx="6" fill="#0F2A1A"/>
+    <rect x="160" y="190" width="50" height="34" rx="6" fill="none" stroke="#16A34A" stroke-width="1.5"/>
+    <text x="185" y="213" fill="#16A34A" font-size="20" font-family="Arial" font-weight="900" text-anchor="middle">AM</text>
+    <!-- Expiry -->
+    <text x="20" y="220" fill="#8BA3C4" font-size="8" font-family="Arial">4b. Válido hasta / Действителен до</text>
+    <text x="20" y="233" fill="#FFFFFF" font-size="11" font-family="Arial" font-weight="600">21.04.2036</text>
+    <!-- DGT stamp -->
+    <circle cx="390" cy="200" r="45" fill="none" stroke="#2E4A7A" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="390" cy="200" r="35" fill="none" stroke="#2E4A7A" stroke-width="1" opacity="0.5"/>
+    <text x="390" y="195" fill="#4A90E2" font-size="10" font-family="Arial" font-weight="700" text-anchor="middle" opacity="0.8">DGT</text>
+    <text x="390" y="210" fill="#4A90E2" font-size="7" font-family="Arial" text-anchor="middle" opacity="0.6">ESPAÑA</text>
+    <!-- Bottom bar -->
+    <rect y="264" width="460" height="26" rx="0" fill="#0A1530" rx="0"/>
+    <rect y="264" width="460" height="26" rx="18" fill="#0A1530"/>
+    <text x="20" y="282" fill="#8BA3C4" font-size="8" font-family="monospace" letter-spacing="1">ESP123456789 &lt;&lt; IVANOVA &lt;&lt; MARIA &lt;&lt;&lt;</text>
+  </g>
+
+  <!-- Spanish flag accent (top right corner) -->
+  <g opacity="0.85">
+    <rect x="1100" y="0" width="100" height="21" fill="#C0392B"/>
+    <rect x="1100" y="21" width="100" height="32" fill="#F9C500"/>
+    <rect x="1100" y="53" width="100" height="21" fill="#C0392B"/>
+  </g>
+
+  <!-- Left content -->
+  <!-- Year badge -->
+  <rect x="60" y="52" width="100" height="28" rx="14" fill="#1E40AF" fill-opacity="0.2"/>
+  <rect x="60" y="52" width="100" height="28" rx="14" fill="none" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="110" y="71" fill="#60A5FA" font-size="12" font-family="Inter, Arial" font-weight="700" text-anchor="middle" letter-spacing="1">ГАЙД 2026</text>
+
+  <!-- Main headline -->
+  <text x="60" y="160" fill="#FFFFFF" font-size="52" font-family="Inter, Arial" font-weight="900" letter-spacing="-1">Водительские</text>
+  <text x="60" y="225" fill="#FFFFFF" font-size="52" font-family="Inter, Arial" font-weight="900" letter-spacing="-1">права</text>
+  <text x="60" y="290" fill="#3B82F6" font-size="52" font-family="Inter, Arial" font-weight="900" letter-spacing="-1">в Испании</text>
+
+  <!-- Subtitle -->
+  <text x="60" y="340" fill="#94A3B8" font-size="20" font-family="Inter, Arial" font-weight="400">Полный гайд для русскоязычных:</text>
+  <text x="60" y="366" fill="#94A3B8" font-size="20" font-family="Inter, Arial" font-weight="400">от выбора автошколы до прав DGT</text>
+
+  <!-- Stats row -->
+  <g transform="translate(60, 410)">
+    <!-- Stat 1 -->
+    <rect width="130" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.05"/>
+    <rect width="130" height="64" rx="12" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.08"/>
+    <text x="65" y="26" fill="#FFFFFF" font-size="22" font-family="Inter, Arial" font-weight="900" text-anchor="middle">500€</text>
+    <text x="65" y="44" fill="#94A3B8" font-size="10" font-family="Inter, Arial" text-anchor="middle">средняя стоимость</text>
+    <text x="65" y="57" fill="#94A3B8" font-size="10" font-family="Inter, Arial" text-anchor="middle">получения прав</text>
+    <!-- Stat 2 -->
+    <rect x="148" width="130" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.05"/>
+    <rect x="148" width="130" height="64" rx="12" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.08"/>
+    <text x="213" y="26" fill="#FFFFFF" font-size="22" font-family="Inter, Arial" font-weight="900" text-anchor="middle">30</text>
+    <text x="213" y="44" fill="#94A3B8" font-size="10" font-family="Inter, Arial" text-anchor="middle">вопросов</text>
+    <text x="213" y="57" fill="#94A3B8" font-size="10" font-family="Inter, Arial" text-anchor="middle">в теоретическом тесте</text>
+    <!-- Stat 3 -->
+    <rect x="296" width="130" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.05"/>
+    <rect x="296" width="130" height="64" rx="12" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.08"/>
+    <text x="361" y="26" fill="#FFFFFF" font-size="22" font-family="Inter, Arial" font-weight="900" text-anchor="middle">3–6</text>
+    <text x="361" y="44" fill="#94A3B8" font-size="10" font-family="Inter, Arial" text-anchor="middle">месяцев</text>
+    <text x="361" y="57" fill="#94A3B8" font-size="10" font-family="Inter, Arial" text-anchor="middle">весь процесс</text>
+  </g>
+
+  <!-- Brand tag -->
+  <rect x="60" y="520" width="136" height="34" rx="10" fill="#1E40AF" fill-opacity="0.15"/>
+  <rect x="60" y="520" width="136" height="34" rx="10" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.4"/>
+  <text x="128" y="542" fill="#60A5FA" font-size="13" font-family="Inter, Arial" font-weight="700" text-anchor="middle">sdadim.eu</text>
+
+  <!-- Bottom thin line accent -->
+  <rect x="0" y="620" width="1200" height="4" fill="url(#blueGlow)"/>
+  <rect x="0" y="621" width="500" height="2" fill="#1E40AF" opacity="0.6"/>
+</svg>

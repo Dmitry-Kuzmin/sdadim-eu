@@ -156,9 +156,9 @@ export default function RadialOrbitalTimeline({
             <div className="absolute -inset-8 rounded-full border border-blue-400/5 animate-[ping_4s_linear_infinite]" />
             
             <img 
-              src="/android-chrome-512x512.png" 
-              alt="Skily Logo" 
-              className="w-14 h-14 md:w-16 md:h-16 rounded-full object-contain relative z-20 transition-transform group-hover:scale-110 will-change-transform"
+              src="/favicon-s.svg" 
+              alt="Sdadim Logo" 
+              className="w-14 h-14 md:w-16 md:h-16 rounded-[25%] shadow-[0_0_20px_rgba(59,130,246,0.3)] object-contain relative z-20 transition-transform group-hover:scale-110 will-change-transform"
             />
           </div>
 

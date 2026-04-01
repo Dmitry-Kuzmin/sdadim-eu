@@ -3,6 +3,66 @@ import { useParams, Link } from "react-router-dom";
 import { getBlogPost, type BlogPost } from "@/lib/supabase";
 import { Clock, ArrowLeft, Calendar } from "lucide-react";
 
+function useSEOMeta(post: BlogPost | null) {
+  useEffect(() => {
+    if (!post) return;
+    const prev = {
+      title: document.title,
+      desc: document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "",
+      ogTitle: document.querySelector('meta[property="og:title"]')?.getAttribute("content") ?? "",
+      ogDesc: document.querySelector('meta[property="og:description"]')?.getAttribute("content") ?? "",
+      ogImage: document.querySelector('meta[property="og:image"]')?.getAttribute("content") ?? "",
+      ogUrl: document.querySelector('meta[property="og:url"]')?.getAttribute("content") ?? "",
+    };
+
+    const setMeta = (sel: string, attr: string, val: string) => {
+      let el = document.querySelector(sel) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        if (attr === "name") el.name = sel.match(/\[name="(.+?)"\]/)?.[1] ?? "";
+        if (attr === "property") el.setAttribute("property", sel.match(/\[property="(.+?)"\]/)?.[1] ?? "");
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", val);
+    };
+
+    document.title = `${post.title} | Сдадим — DGT`;
+    setMeta('meta[name="description"]', "name", post.excerpt);
+    setMeta('meta[property="og:title"]', "property", post.title);
+    setMeta('meta[property="og:description"]', "property", post.excerpt);
+    if (post.cover_image) setMeta('meta[property="og:image"]', "property", post.cover_image.startsWith("http") ? post.cover_image : `https://sdadim.eu${post.cover_image}`);
+    setMeta('meta[property="og:url"]', "property", `https://sdadim.eu/blog/${post.slug}`);
+    setMeta('meta[property="og:type"]', "property", "article");
+
+    // JSON-LD structured data
+    const ldId = "ld-article";
+    document.getElementById(ldId)?.remove();
+    const ld = document.createElement("script");
+    ld.id = ldId;
+    ld.type = "application/ld+json";
+    ld.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: post.title,
+      description: post.excerpt,
+      image: post.cover_image ? (post.cover_image.startsWith("http") ? post.cover_image : `https://sdadim.eu${post.cover_image}`) : undefined,
+      datePublished: post.published_at,
+      publisher: { "@type": "Organization", name: "Сдадим", url: "https://sdadim.eu" },
+    });
+    document.head.appendChild(ld);
+
+    return () => {
+      document.title = prev.title;
+      document.querySelector('meta[name="description"]')?.setAttribute("content", prev.desc);
+      document.querySelector('meta[property="og:title"]')?.setAttribute("content", prev.ogTitle);
+      document.querySelector('meta[property="og:description"]')?.setAttribute("content", prev.ogDesc);
+      document.querySelector('meta[property="og:image"]')?.setAttribute("content", prev.ogImage);
+      document.querySelector('meta[property="og:url"]')?.setAttribute("content", prev.ogUrl);
+      document.getElementById(ldId)?.remove();
+    };
+  }, [post]);
+}
+
 function Skeleton() {
   return (
     <div className="animate-pulse max-w-2xl mx-auto py-24 px-4">
@@ -29,6 +89,8 @@ export default function Article() {
       .then(setPost)
       .finally(() => setLoading(false));
   }, [slug]);
+
+  useSEOMeta(post);
 
   if (loading) return <Skeleton />;
 

@@ -41,7 +41,7 @@ export function CourseComparison() {
     <div className="relative z-10 w-full">
       <div className="mb-20 text-center">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">Эволюция подготовки</h2>
-        <p className="text-zinc-400 text-lg max-w-xl mx-auto">Skilyapp против традиционных автошкол</p>
+        <p className="text-zinc-400 text-lg max-w-xl mx-auto">Sdadim против традиционных автошкол</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto items-center">
@@ -82,7 +82,7 @@ export function CourseComparison() {
 
           <div className="absolute inset-0 bg-sky-500/5 pointer-events-none z-0"></div>
           <h3 className="relative z-10 text-2xl font-black text-white text-center uppercase tracking-widest mb-10 flex items-center justify-center gap-3">
-            Skilyapp <Crown size={24} className="text-amber-400 fill-amber-400/20" />
+            Sdadim <Crown size={24} className="text-amber-400 fill-amber-400/20" />
           </h3>
 
           {/* Price */}
