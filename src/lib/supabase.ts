@@ -11,6 +11,8 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: { persistSession: false },
 });
 
+export const getSupabaseClient = async () => supabase;
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface BlogPost {
