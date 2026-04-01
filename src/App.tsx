@@ -10,6 +10,7 @@ const Legal = lazy(() => import("@/pages/Legal"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 const ArticleKitDemo = lazy(() => import("@/pages/ArticleKitDemo"));
 const ArticleEkoDrive = lazy(() => import("@/pages/ArticleEkoDrive"));
+const ArticleFakeLicense = lazy(() => import("@/pages/ArticleFakeLicense"));
 
 function PageLoader() {
   return (
@@ -35,6 +36,7 @@ function LayoutContent() {
           <Route path="/legal/:tab" element={<Legal />} />
           <Route path="/blog/kit" element={<ArticleKitDemo />} />
           <Route path="/blog/ekonomichnoe-vozhdenie" element={<ArticleEkoDrive />} />
+          <Route path="/blog/poddelnyye-prava-ispaniya" element={<ArticleFakeLicense />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
