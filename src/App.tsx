@@ -11,6 +11,7 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 const ArticleKitDemo = lazy(() => import("@/pages/ArticleKitDemo"));
 const ArticleEkoDrive = lazy(() => import("@/pages/ArticleEkoDrive"));
 const ArticleFakeLicense = lazy(() => import("@/pages/ArticleFakeLicense"));
+const ArticlePractical = lazy(() => import("@/pages/ArticlePractical"));
 
 function PageLoader() {
   return (
@@ -37,6 +38,7 @@ function LayoutContent() {
           <Route path="/blog/kit" element={<ArticleKitDemo />} />
           <Route path="/blog/ekonomichnoe-vozhdenie" element={<ArticleEkoDrive />} />
           <Route path="/blog/poddelnyye-prava-ispaniya" element={<ArticleFakeLicense />} />
+          <Route path="/blog/prakticheskiy-ekzamen" element={<ArticlePractical />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
