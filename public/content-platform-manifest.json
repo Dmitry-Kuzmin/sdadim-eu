@@ -1,0 +1,244 @@
+{
+  "siteName": "sdadim-eu",
+  "siteUrl": "https://sdadim.eu",
+  "generatedAt": "2026-04-02T13:12:36.563Z",
+  "discoveryFiles": [
+    "robots.txt",
+    "sitemap.xml",
+    "news-sitemap.xml",
+    "rss.xml",
+    "llms.txt",
+    "llms-full.txt",
+    "content-platform-manifest.json"
+  ],
+  "counts": {
+    "pages": 13,
+    "posts": 6
+  },
+  "pages": [
+    {
+      "route": "/",
+      "outputPath": "index.html",
+      "canonical": "https://sdadim.eu/",
+      "changefreq": "daily",
+      "priority": "1.0",
+      "kind": "home"
+    },
+    {
+      "route": "/blog",
+      "outputPath": "blog.html",
+      "canonical": "https://sdadim.eu/blog",
+      "changefreq": "daily",
+      "priority": "0.9",
+      "kind": "blog-index"
+    },
+    {
+      "route": "/legal/terms",
+      "outputPath": "legal/terms.html",
+      "canonical": "https://sdadim.eu/legal/terms",
+      "changefreq": "monthly",
+      "priority": "0.4",
+      "kind": "legal"
+    },
+    {
+      "route": "/legal/privacy",
+      "outputPath": "legal/privacy.html",
+      "canonical": "https://sdadim.eu/legal/privacy",
+      "changefreq": "monthly",
+      "priority": "0.4",
+      "kind": "legal"
+    },
+    {
+      "route": "/legal/cookies",
+      "outputPath": "legal/cookies.html",
+      "canonical": "https://sdadim.eu/legal/cookies",
+      "changefreq": "monthly",
+      "priority": "0.3",
+      "kind": "legal"
+    },
+    {
+      "route": "/legal/subscription",
+      "outputPath": "legal/subscription.html",
+      "canonical": "https://sdadim.eu/legal/subscription",
+      "changefreq": "monthly",
+      "priority": "0.3",
+      "kind": "legal"
+    },
+    {
+      "route": "/legal/refund",
+      "outputPath": "legal/refund.html",
+      "canonical": "https://sdadim.eu/legal/refund",
+      "changefreq": "monthly",
+      "priority": "0.3",
+      "kind": "legal"
+    },
+    {
+      "route": "/blog/voditelskie-prava-v-ispanii-2026",
+      "outputPath": "blog/voditelskie-prava-v-ispanii-2026.html",
+      "canonical": "https://sdadim.eu/blog/voditelskie-prava-v-ispanii-2026",
+      "changefreq": "weekly",
+      "priority": "0.85",
+      "kind": "article",
+      "llmsRequired": true,
+      "slug": "voditelskie-prava-v-ispanii-2026",
+      "title": "Водительские права в Испании для русскоязычных: полный гайд 2026",
+      "description": "Как получить права в Испании с нуля: теоретический экзамен DGT, практика, реальные цены 2026 года и советы для граждан России и СНГ.",
+      "publishedAt": "2026-04-01T08:00:00+00:00",
+      "updatedAt": "2026-04-01T16:29:01.621526+00:00",
+      "category": "Гайды"
+    },
+    {
+      "route": "/blog/tseny-na-prava",
+      "outputPath": "blog/tseny-na-prava.html",
+      "canonical": "https://sdadim.eu/blog/tseny-na-prava",
+      "changefreq": "weekly",
+      "priority": "0.85",
+      "kind": "article",
+      "llmsRequired": true,
+      "slug": "tseny-na-prava",
+      "title": "Сколько реально стоят водительские права в Испании в 2026 году?",
+      "description": "Полный разбор цен на получение водительских прав в Испании в 2026 году. Интерактивный калькулятор расходов с учетом пошлин, Tasa DGT и пересдач.",
+      "publishedAt": "2025-04-05T10:00:00+00:00",
+      "updatedAt": "2026-04-01T20:27:52.396909+00:00",
+      "category": "Финансы"
+    },
+    {
+      "route": "/blog/slovar-dgt",
+      "outputPath": "blog/slovar-dgt.html",
+      "canonical": "https://sdadim.eu/blog/slovar-dgt",
+      "changefreq": "weekly",
+      "priority": "0.85",
+      "kind": "article",
+      "llmsRequired": true,
+      "slug": "slovar-dgt",
+      "title": "Испанский словарик будущего водителя: термины DGT",
+      "description": "Интерактивные карточки с испанскими терминами, которые используются инструкторами и на экзаменах в Испании. Выучи язык дороги.",
+      "publishedAt": "2025-04-04T10:00:00+00:00",
+      "updatedAt": "2026-04-01T20:16:22.312232+00:00",
+      "category": "Документы"
+    },
+    {
+      "route": "/blog/prakticheskiy-ekzamen",
+      "outputPath": "blog/prakticheskiy-ekzamen.html",
+      "canonical": "https://sdadim.eu/blog/prakticheskiy-ekzamen",
+      "changefreq": "weekly",
+      "priority": "0.85",
+      "kind": "article",
+      "llmsRequired": true,
+      "slug": "prakticheskiy-ekzamen",
+      "title": "Как сдать практический экзамен по вождению с первого раза (2026)",
+      "description": "Многие заваливают практику DGT из-за нервов и хитрых ловушек инспектора. Разбираем вопросы до старта и алгоритмы успешной сдачи.",
+      "publishedAt": "2025-04-03T10:00:00+00:00",
+      "updatedAt": "2026-04-01T19:51:51.43458+00:00",
+      "category": "Подготовка"
+    },
+    {
+      "route": "/blog/poddelnyye-prava-ispaniya",
+      "outputPath": "blog/poddelnyye-prava-ispaniya.html",
+      "canonical": "https://sdadim.eu/blog/poddelnyye-prava-ispaniya",
+      "changefreq": "weekly",
+      "priority": "0.85",
+      "kind": "article",
+      "llmsRequired": true,
+      "slug": "poddelnyye-prava-ispaniya",
+      "title": "Поддельные права в Испании: тюрьма, штрафы и легальный путь",
+      "description": "Что грозит за покупку фейковых прав в Испании в 2026 году? Огромные штрафы до 24 месяцев, срок до 3 лет и отказ страховой. Как сдать легально.",
+      "publishedAt": "2025-04-02T10:00:00+00:00",
+      "updatedAt": "2026-04-01T18:53:35.23661+00:00",
+      "category": "Документы"
+    },
+    {
+      "route": "/blog/ekonomichnoe-vozhdenie",
+      "outputPath": "blog/ekonomichnoe-vozhdenie.html",
+      "canonical": "https://sdadim.eu/blog/ekonomichnoe-vozhdenie",
+      "changefreq": "weekly",
+      "priority": "0.85",
+      "kind": "article",
+      "llmsRequired": true,
+      "slug": "ekonomichnoe-vozhdenie",
+      "title": "Экономичное вождение: 13 техник для снижения расхода на 20–30%",
+      "description": "Многие водители сливают деньги через педаль газа. Разбираем экономичную езду, мифы про нейтраль и то, почему это важно для экзамена DGT.",
+      "publishedAt": "2025-04-01T10:00:00+00:00",
+      "updatedAt": "2026-04-01T18:53:34.90083+00:00",
+      "category": "Подготовка"
+    }
+  ],
+  "prerenderRoutes": [
+    "/",
+    "/blog",
+    "/legal/terms",
+    "/legal/privacy",
+    "/legal/cookies",
+    "/legal/subscription",
+    "/legal/refund",
+    "/blog/voditelskie-prava-v-ispanii-2026",
+    "/blog/tseny-na-prava",
+    "/blog/slovar-dgt",
+    "/blog/prakticheskiy-ekzamen",
+    "/blog/poddelnyye-prava-ispaniya",
+    "/blog/ekonomichnoe-vozhdenie",
+    "/404"
+  ],
+  "posts": [
+    {
+      "slug": "voditelskie-prava-v-ispanii-2026",
+      "title": "Водительские права в Испании для русскоязычных: полный гайд 2026",
+      "excerpt": "Как получить права в Испании с нуля: теоретический экзамен DGT, практика, реальные цены 2026 года и советы для граждан России и СНГ.",
+      "cover_image": "/assets/blog/voditelskie-prava-ispaniya-2026.svg",
+      "published_at": "2026-04-01T08:00:00+00:00",
+      "updated_at": "2026-04-01T16:29:01.621526+00:00",
+      "category": "Гайды",
+      "reading_time": 14
+    },
+    {
+      "slug": "tseny-na-prava",
+      "title": "Сколько реально стоят водительские права в Испании в 2026 году?",
+      "excerpt": "Полный разбор цен на получение водительских прав в Испании в 2026 году. Интерактивный калькулятор расходов с учетом пошлин, Tasa DGT и пересдач.",
+      "cover_image": "/assets/blog/tseny-na-prava.jpg",
+      "published_at": "2025-04-05T10:00:00+00:00",
+      "updated_at": "2026-04-01T20:27:52.396909+00:00",
+      "category": "Финансы",
+      "reading_time": 8
+    },
+    {
+      "slug": "slovar-dgt",
+      "title": "Испанский словарик будущего водителя: термины DGT",
+      "excerpt": "Интерактивные карточки с испанскими терминами, которые используются инструкторами и на экзаменах в Испании. Выучи язык дороги.",
+      "cover_image": "/assets/blog/slovar-dgt.jpg",
+      "published_at": "2025-04-04T10:00:00+00:00",
+      "updated_at": "2026-04-01T20:16:22.312232+00:00",
+      "category": "Документы",
+      "reading_time": 5
+    },
+    {
+      "slug": "prakticheskiy-ekzamen",
+      "title": "Как сдать практический экзамен по вождению с первого раза (2026)",
+      "excerpt": "Многие заваливают практику DGT из-за нервов и хитрых ловушек инспектора. Разбираем вопросы до старта и алгоритмы успешной сдачи.",
+      "cover_image": "/assets/blog/prakticheskiy-ekzamen.jpg",
+      "published_at": "2025-04-03T10:00:00+00:00",
+      "updated_at": "2026-04-01T19:51:51.43458+00:00",
+      "category": "Подготовка",
+      "reading_time": 10
+    },
+    {
+      "slug": "poddelnyye-prava-ispaniya",
+      "title": "Поддельные права в Испании: тюрьма, штрафы и легальный путь",
+      "excerpt": "Что грозит за покупку фейковых прав в Испании в 2026 году? Огромные штрафы до 24 месяцев, срок до 3 лет и отказ страховой. Как сдать легально.",
+      "cover_image": "/assets/blog/poddelnyye-prava-ispaniya.jpg",
+      "published_at": "2025-04-02T10:00:00+00:00",
+      "updated_at": "2026-04-01T18:53:35.23661+00:00",
+      "category": "Документы",
+      "reading_time": 7
+    },
+    {
+      "slug": "ekonomichnoe-vozhdenie",
+      "title": "Экономичное вождение: 13 техник для снижения расхода на 20–30%",
+      "excerpt": "Многие водители сливают деньги через педаль газа. Разбираем экономичную езду, мифы про нейтраль и то, почему это важно для экзамена DGT.",
+      "cover_image": "/assets/blog/ekonomichnoe-vozhdenie.jpg",
+      "published_at": "2025-04-01T10:00:00+00:00",
+      "updated_at": "2026-04-01T18:53:34.90083+00:00",
+      "category": "Подготовка",
+      "reading_time": 9
+    }
+  ]
+}

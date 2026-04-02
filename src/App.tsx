@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -22,6 +22,16 @@ function PageLoader() {
       <div className="w-8 h-8 border-2 border-white/10 border-t-blue-500 rounded-full animate-spin" />
     </div>
   );
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 function LayoutContent() {
@@ -56,6 +66,7 @@ function LayoutContent() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <LayoutContent />
     </BrowserRouter>
   );

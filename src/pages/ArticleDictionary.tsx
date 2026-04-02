@@ -43,6 +43,15 @@ function useSEO() {
     setMeta('meta[property="og:title"]', "property", "Испанский словарь водителя (Гайд от Sdadim)");
     setMeta('meta[property="og:image"]', "property", "https://sdadim.eu/assets/blog/slovar-dgt.jpg");
     setMeta('meta[property="og:url"]', "property", "https://sdadim.eu/blog/slovar-dgt");
+    setMeta('meta[property="og:type"]', "property", "article");
+
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = "https://sdadim.eu/blog/slovar-dgt";
 
     return () => { document.title = prev; };
   }, []);

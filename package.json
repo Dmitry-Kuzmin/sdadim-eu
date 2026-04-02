@@ -5,7 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "prebuild": "npm run generate:discovery",
+    "build:app": "vite build",
+    "build": "npm run build:app && npm run prerender && npm run seo:assert:dist",
+    "generate:discovery": "node scripts/generate-discovery.mjs",
+    "prerender": "node scripts/prerender.mjs",
+    "seo:assert:dist": "node scripts/seo-assert-dist.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },
@@ -22,12 +27,16 @@
     "tailwind-merge": "^2.6.1"
   },
   "devDependencies": {
+    "@sparticuz/chromium": "^143.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
     "autoprefixer": "^10.4.20",
+    "express": "^5.1.0",
     "postcss": "^8.4.47",
+    "puppeteer": "^24.32.0",
+    "puppeteer-core": "^24.32.0",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.5.3",
     "vite": "^5.4.10"

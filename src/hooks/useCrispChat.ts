@@ -16,16 +16,18 @@ export function useCrispChat() {
     window.$crisp = [];
     window.CRISP_WEBSITE_ID = "f75e4c12-7db0-4f2f-90fb-711aacc45df3";
 
-    const d = document;
-    const s = d.createElement("script");
-    s.id = "crisp-chat-script";
-    s.src = "https://client.crisp.chat/l.js";
-    s.async = true;
-    
-    // Add to head
-    if (d.head) {
-        d.head.appendChild(s);
-    }
+    setTimeout(() => {
+        const d = document;
+        const s = d.createElement("script");
+        s.id = "crisp-chat-script";
+        s.src = "https://client.crisp.chat/l.js";
+        s.async = true;
+        
+        // Add to head
+        if (d.head) {
+            d.head.appendChild(s);
+        }
+    }, 4000);
 
     // Optional: cleanup or hide when unmounting 
     return () => {

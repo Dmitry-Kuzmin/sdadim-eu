@@ -1,8 +1,24 @@
 {
   "rewrites": [
     {
-      "source": "/sitemap.xml",
-      "destination": "https://yffjnqegeiorunyvcxkn.supabase.co/functions/v1/sitemap-sdadim"
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/blog/:slug.html"
+    },
+    {
+      "source": "/legal",
+      "destination": "/legal/terms.html"
+    },
+    {
+      "source": "/legal/:tab",
+      "destination": "/legal/:tab.html"
+    },
+    {
+      "source": "/404",
+      "destination": "/404.html"
     },
     {
       "source": "/(.*)",

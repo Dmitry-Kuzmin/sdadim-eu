@@ -13,6 +13,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SeoHead } from "@/components/seo/SeoHead";
 
 const CATEGORIES = [
   { id: "all", label: "Все статьи", icon: Newspaper },
@@ -53,10 +54,6 @@ export default function Blog() {
   const [activeCategory, setActiveCategory] = useState("all");
 
   useEffect(() => {
-    // SEO meta
-    document.title = "Блог о правах в Испании | Сдадим";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute("content", "Полезные статьи о получении прав в Испании для русскоязычных: гайды, советы, разбор экзамена DGT.");
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
@@ -81,6 +78,11 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-[#050B14]">
+      <SeoHead
+        title="Блог о правах в Испании | Сдадим"
+        description="Полезные статьи о получении прав в Испании для русскоязычных: гайды, советы, разбор экзамена DGT."
+        canonicalUrl="https://sdadim.eu/blog"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-6 lg:gap-10">
 

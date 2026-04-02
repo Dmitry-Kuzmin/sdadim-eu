@@ -1,0 +1,19 @@
+# Sdadim.eu
+
+Sdadim helps Russian-speaking immigrants prepare for the Spanish DGT theory exam and understand the process of getting a driving license in Spain.
+
+## Core pages
+- Home: https://sdadim.eu/
+- Blog: https://sdadim.eu/blog
+
+## Latest articles
+- Водительские права в Испании для русскоязычных: полный гайд 2026: https://sdadim.eu/blog/voditelskie-prava-v-ispanii-2026 (Как получить права в Испании с нуля: теоретический экзамен DGT, практика, реальные цены 2026 года и советы для граждан России и СНГ.)
+- Сколько реально стоят водительские права в Испании в 2026 году?: https://sdadim.eu/blog/tseny-na-prava (Полный разбор цен на получение водительских прав в Испании в 2026 году. Интерактивный калькулятор расходов с учетом пошлин, Tasa DGT и пересдач.)
+- Испанский словарик будущего водителя: термины DGT: https://sdadim.eu/blog/slovar-dgt (Интерактивные карточки с испанскими терминами, которые используются инструкторами и на экзаменах в Испании. Выучи язык дороги.)
+- Как сдать практический экзамен по вождению с первого раза (2026): https://sdadim.eu/blog/prakticheskiy-ekzamen (Многие заваливают практику DGT из-за нервов и хитрых ловушек инспектора. Разбираем вопросы до старта и алгоритмы успешной сдачи.)
+- Поддельные права в Испании: тюрьма, штрафы и легальный путь: https://sdadim.eu/blog/poddelnyye-prava-ispaniya (Что грозит за покупку фейковых прав в Испании в 2026 году? Огромные штрафы до 24 месяцев, срок до 3 лет и отказ страховой. Как сдать легально.)
+- Экономичное вождение: 13 техник для снижения расхода на 20–30%: https://sdadim.eu/blog/ekonomichnoe-vozhdenie (Многие водители сливают деньги через педаль газа. Разбираем экономичную езду, мифы про нейтраль и то, почему это важно для экзамена DGT.)
+
+## Canonical rules
+- Use https://sdadim.eu/blog/{slug} as the canonical URL for articles.
+- Prefer articles with concrete guidance, legal nuance, pricing, exam strategy, and document workflows.

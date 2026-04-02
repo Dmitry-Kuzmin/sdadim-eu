@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, memo, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +11,7 @@ import { CourseTimeline } from "@/components/ui/course/CourseTimeline";
 import { CourseChecklist } from "@/components/ui/course/CourseChecklist";
 import { IndividualPricingCards } from "@/components/ui/course/IndividualPricingCards";
 import { CinematicHero } from "@/components/ui/cinematic-landing-hero";
+import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 import { useCrispChat } from "@/hooks/useCrispChat";
 import { getSupabaseClient } from "@/lib/supabase";
 import {
@@ -442,56 +443,52 @@ const RotatingHeroBadge = ({ stream }: { stream?: StreamInfo | null }) => {
 
   const spotsLeft = stream ? stream.spots_total - stream.spots_enrolled : 4;
 
-  const badges = [
+  const badges = useMemo(() => [
     {
       id: 0,
       content: (
-        <div className="flex items-center gap-2 px-4 py-2">
-          <span className="relative flex h-2 w-2">
+        <div className="flex items-center gap-2 px-3 py-1.5 whitespace-nowrap">
+          <span className="relative flex h-1.5 w-1.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500"></span>
           </span>
-          <span className="text-blue-200 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-sm">
-            Набор на {streamNum} поток открыт · {spotsLeft} мест
+          <span className="text-blue-200 text-[11px] sm:text-xs font-bold tracking-wide uppercase">
+            {streamNum} поток открыт · {spotsLeft} мест
           </span>
         </div>
       ),
-      className: "bg-blue-500/10 border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:bg-blue-500/20",
+      className: "bg-[#0b162c] border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:bg-[#102040]",
     },
     {
       id: 1,
       content: (
-        <div className="group flex items-center gap-3 px-1.5 py-1.5 pr-4">
-          <div className="bg-white/10 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-white/10 flex items-center gap-1.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></div>
+        <div className="group flex items-center gap-2 px-3 py-1.5 whitespace-nowrap">
+          <div className="bg-white/10 text-white px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-tighter border border-white/10 flex items-center gap-1">
+            <div className="w-1 h-1 rounded-full bg-rose-500 animate-pulse"></div>
             LIVE
           </div>
-          <span className="text-zinc-300 text-xs sm:text-sm font-medium tracking-wide">Старт потока: {dateFormatted}</span>
-          <div className="h-4 w-px bg-white/10 hidden sm:block mx-1"></div>
-          <span className="text-zinc-500 hidden sm:flex items-center gap-1 text-xs font-semibold">
-            Подобрать тариф
-            <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform text-zinc-400" />
-          </span>
+          <span className="text-zinc-300 text-[11px] sm:text-xs font-bold tracking-tight">старт: {dateFormatted}</span>
+          <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform text-zinc-500 ml-1" />
         </div>
       ),
-      className: "bg-white/[0.03] border-white/5 shadow-[0_0_15px_rgba(255,255,255,0.02)] hover:bg-white/10",
+      className: "bg-[#0a101f] border-white/5 shadow-[0_0_15px_rgba(255,255,255,0.02)] hover:bg-[#121c33]",
     },
     {
       id: 2,
       content: (
-        <div className="flex items-center gap-2 px-4 py-2">
-          <span className="relative flex h-2 w-2">
+        <div className="flex items-center gap-2 px-3 py-1.5 whitespace-nowrap">
+          <span className="relative flex h-1.5 w-1.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-500"></span>
           </span>
-          <span className="text-orange-200 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-sm">
-            {spotsLeft <= 2 ? `⚠️ Осталось ${spotsLeft} места — торопись!` : 'Успейте занять место: набор скоро закроется'}
+          <span className="text-orange-200 text-[11px] sm:text-xs font-bold tracking-wide uppercase">
+            {spotsLeft <= 2 ? `Осталось ${spotsLeft} места!` : 'Набор скоро закроется'}
           </span>
         </div>
       ),
-      className: "bg-orange-500/10 border-orange-500/20 shadow-[0_0_15px_rgba(249,115,22,0.1)] hover:bg-orange-500/20",
+      className: "bg-[#181005] border-orange-500/20 shadow-[0_0_15px_rgba(249,115,22,0.1)] hover:bg-[#241708]",
     }
-  ];
+  ], [streamNum, spotsLeft, dateFormatted]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -517,7 +514,10 @@ const RotatingHeroBadge = ({ stream }: { stream?: StreamInfo | null }) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -10, scale: 0.95 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className={`absolute flex justify-center items-center rounded-full border backdrop-blur-md transition-colors ${activeBadge.className}`}
+          className={cn(
+            "absolute flex justify-center items-center rounded-full border transition-all",
+            activeBadge.className
+          )}
         >
           {activeBadge.content}
         </motion.div>
@@ -570,15 +570,22 @@ const StreamSelectorBanner = ({ dbStreams }: { dbStreams: any[] | null }) => {
     return target;
   };
 
+  const formatDate = (iso: string) =>
+    new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long' }).format(new Date(iso + 'T00:00:00'));
+
   const targetDate = activeStream?.start_date ? new Date(activeStream.start_date + 'T00:00:00') : getFallbackDate();
   const dateFormatted = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long' }).format(targetDate);
+
+  // Pre-compute stream dates to avoid Intl calls in render loop
+  const streamDates = dbStreams?.map(s => formatDate(s.start_date)) ?? [];
 
   return (
     <div className="max-w-[700px] mx-auto mb-10 w-full relative z-20">
       <div 
         className={cn(
-          "relative overflow-hidden rounded-2xl bg-white/[0.03] border backdrop-blur-md transition-colors duration-300",
-          isOpen ? "border-white/20" : "border-white/10"
+          "relative overflow-hidden rounded-2xl border transition-colors duration-200",
+          "bg-[#0c1422]",
+          isOpen ? "border-white/15" : "border-white/8"
         )}
       >
         {/* Subtle Top Gradient Line */}
@@ -608,7 +615,7 @@ const StreamSelectorBanner = ({ dbStreams }: { dbStreams: any[] | null }) => {
                 </span>
               </div>
               
-              <div className="flex items-center gap-1.5 text-xs">
+              <div className="flex items-center flex-wrap gap-x-1.5 gap-y-0.5 text-xs">
                 {isSFull ? (
                   <Lock className="w-3.5 h-3.5 text-red-400" />
                 ) : isFewSpots ? (
@@ -620,13 +627,13 @@ const StreamSelectorBanner = ({ dbStreams }: { dbStreams: any[] | null }) => {
                   {isSFull ? "Мест нет" : `${spotsLeft} из ${spotsTotal} мест свободно`}
                 </span>
                 {hasMore && (
-                  <>
-                    <span className="text-zinc-700 hidden sm:inline">·</span>
-                    <span className="text-zinc-500 hidden sm:inline underline decoration-dotted underline-offset-4 hover:text-white transition-colors">
+                  <div className="flex items-center gap-1.5 opacity-80 mt-0.5 sm:mt-0">
+                    <span className="text-zinc-700">·</span>
+                    <span className="text-zinc-500 underline decoration-dotted underline-offset-4 hover:text-white transition-colors">
                       {isOpen ? "Свернуть" : `Выбрать дату старта`}
                     </span>
-                    <ChevronDown className={cn("w-3.5 h-3.5 text-zinc-500 hidden sm:inline transition-transform duration-300", isOpen && "rotate-180")} />
-                  </>
+                    <ChevronDown className={cn("w-3.5 h-3.5 text-zinc-500 transition-transform duration-300", isOpen && "rotate-180")} />
+                  </div>
                 )}
               </div>
             </div>
@@ -641,17 +648,10 @@ const StreamSelectorBanner = ({ dbStreams }: { dbStreams: any[] | null }) => {
         </div>
 
         {/* Expanded list of streams */}
-        <AnimatePresence>
-          {isOpen && hasMore && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="border-t border-white/5 bg-black/40 overflow-hidden"
-            >
+        {isOpen && hasMore && (
+            <div className="border-t border-white/5 bg-[#080f1a] overflow-hidden animate-in fade-in duration-150">
               <div className="p-3 grid grid-cols-1 gap-1.5">
-                <div className="text-xs text-zinc-500 font-medium px-2 py-1 uppercase tracking-widest mb-1">
+                <div className="text-[10px] text-zinc-500 font-bold px-2 py-1 uppercase tracking-widest mb-1 opacity-70">
                   План запусков на ближайшее время:
                 </div>
                 {dbStreams.map((s, idx) => {
@@ -659,7 +659,7 @@ const StreamSelectorBanner = ({ dbStreams }: { dbStreams: any[] | null }) => {
                   const sSpotsLeft = sIsCompleted ? 0 : Math.max(0, s.spots_total - s.spots_enrolled);
                   const isSFull = sIsCompleted || sSpotsLeft <= 0;
                   const isSelected = idx === selectedIndex;
-                  const sDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long' }).format(new Date(s.start_date + 'T00:00:00'));
+                  const sDate = streamDates[idx] ?? '';
                   
                   return (
                     <div 
@@ -670,11 +670,11 @@ const StreamSelectorBanner = ({ dbStreams }: { dbStreams: any[] | null }) => {
                         setIsOpen(false);
                       }}
                       className={cn(
-                        "flex items-center justify-between p-3 rounded-xl transition-all border",
+                        "flex items-center justify-between p-3 rounded-xl transition-colors border",
                         isSelected 
-                          ? "bg-blue-500/10 border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]" 
-                          : "bg-white/5 border-transparent hover:bg-white/10 hover:border-white/10",
-                        isSFull ? "opacity-50 cursor-pointer" : "cursor-pointer" // No longer hiding full streams, lets show them as unselectable
+                          ? "bg-blue-500/10 border-blue-500/25" 
+                          : "bg-white/[0.03] border-transparent hover:bg-white/[0.06] hover:border-white/8",
+                        isSFull ? "opacity-50 cursor-default" : "cursor-pointer"
                       )}
                     >
                       <div className="flex items-center gap-4">
@@ -713,13 +713,14 @@ const StreamSelectorBanner = ({ dbStreams }: { dbStreams: any[] | null }) => {
                   );
                 })}
               </div>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
       </div>
     </div>
   );
 };
+
+const StreamSelectorBannerMemo = memo(StreamSelectorBanner);
 
 const CourseLanding = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -731,6 +732,9 @@ const CourseLanding = () => {
   const [pricingTab, setPricingTab] = useState<"groups" | "individual">("groups");
   const [dbAddons, setDbAddons] = useState<{ addon_key: string; label: string; price_group: number; price_individual: number }[]>([]);
   const [dbStreams, setDbStreams] = useState<StreamInfo[] | null>(null);
+
+  // Для возможности сравнить старый и новый Hero экран
+  const [showNewHero, setShowNewHero] = useState(true);
 
   // Smart form state
   const [nameValue, setNameValue] = useState('');
@@ -864,10 +868,109 @@ const CourseLanding = () => {
         canonicalUrl="https://sdadim.eu/"
       />
 
-      {/* ═══════════════════════════════════════════
-          BLOCK 1: HERO — Arc Gallery
-          ═══════════════════════════════════════════ */}
-      <header className="relative min-h-[100dvh] flex flex-col items-center overflow-hidden">
+      {/* Dev Toggle */}
+      <div className="fixed bottom-4 right-4 z-[9999]">
+        <button 
+          onClick={() => setShowNewHero(!showNewHero)} 
+          className="bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-1.5 rounded-lg text-xs font-semibold text-white backdrop-blur-md shadow-xl transition-all"
+        >
+          {showNewHero ? "Показать старый Hero" : "Показать новый Hero"}
+        </button>
+      </div>
+
+      {showNewHero ? (
+        <div className="relative">
+          {/* Navbar (абсолютно позиционированный над HeroGeometric) */}
+          <div className="absolute top-0 left-0 right-0 z-50">
+            <nav className={cn(
+              "flex items-center justify-between w-full px-4 py-3 md:px-6 md:py-4 max-w-[1325px] mx-auto transition-all duration-700 container",
+              heroReady ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
+            )}>
+              <a href="/" className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
+                <img src="/favicon-s.svg" alt="Sdadim" className="w-8 h-8 rounded-[22%] shadow-lg shadow-blue-500/20" />
+                <div className="flex flex-col">
+                  <span className="text-xl font-bold tracking-tight text-white/90 leading-none">Sdadim</span>
+                  <span className="text-[9px] text-zinc-400 font-bold tracking-[0.1em] leading-tight uppercase mt-0.5 relative top-[1px]">by Skilyapp</span>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4">
+                <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400 mr-2">
+                  <button onClick={scrollToHowItWorks} className="hover:text-white transition-colors">Формат курса</button>
+                  <button onClick={() => {
+                    const el = document.getElementById('pricing');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }} className="hover:text-white transition-colors">Тарифы</button>
+                  <button onClick={() => {
+                    const el = document.getElementById('faq');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }} className="hover:text-white transition-colors">FAQ</button>
+                </div>
+
+                <a
+                  href="https://t.me/skilyapp_bot?start=course"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-flex bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:shadow-lg hover:shadow-blue-500/20 transition-all active:scale-95 shadow-[0_0_15px_rgba(59,130,246,0.2)] items-center gap-2"
+                >
+                  Начать учиться
+                </a>
+
+                {/* Mobile Burger */}
+                <button
+                  onClick={() => setMobileMenuOpen(true)}
+                  className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
+                >
+                  <Menu className="w-6 h-6" />
+                </button>
+              </div>
+            </nav>
+          </div>
+
+          <HeroGeometric
+            badge={
+              <div className="w-full max-w-sm mx-auto">
+                <RotatingHeroBadge stream={dbStreams?.find(s => s.status === 'open') ?? dbStreams?.[0] ?? null} />
+              </div>
+            }
+            title1="Права в Испании — с первого раза"
+            title2="Теория DGT на русском"
+            description="Объясняем логику ПДД, а не заставляем зубрить. 16 000 вопросов, живые уроки, поддержка с Cita и Tasa — всё в одном курсе."
+          >
+            {/* CTA buttons for new Hero */}
+            <div className={cn(
+              "flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 w-full mt-4",
+              heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            )}>
+              <button
+                onClick={() => scrollToForm("hero")}
+                className="group relative w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-base overflow-hidden transition-all active:scale-[0.97]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 transition-all group-hover:brightness-110" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-blue-400 to-cyan-400" />
+                <span className="relative flex items-center justify-center gap-2">
+                  Подобрать тариф
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </button>
+              <button
+                onClick={scrollToHowItWorks}
+                className="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-base border border-white/[0.15] bg-white/[0.05] hover:bg-white/[0.1] hover:border-white/[0.2] transition-all active:scale-[0.97] flex items-center justify-center gap-2 backdrop-blur-md"
+              >
+                Как это работает?
+                <ArrowDown className="w-4 h-4" />
+              </button>
+            </div>
+
+          </HeroGeometric>
+        </div>
+      ) : (
+        <>
+          {/* ═══════════════════════════════════════════
+              BLOCK 1: HERO — Arc Gallery (OLD VERSION)
+              ═══════════════════════════════════════════ */}
+
+          <header className="relative min-h-[100dvh] flex flex-col items-center overflow-hidden">
         {/* Ambient background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-blue-600/[0.08] rounded-full blur-[140px] curso-glow-pulse" />
@@ -881,7 +984,7 @@ const CourseLanding = () => {
 
         {/* Navbar */}
         <nav className={cn(
-          "relative z-50 flex items-center justify-between w-full px-6 py-6 md:px-10 max-w-[1325px] mx-auto transition-all duration-700",
+          "relative z-50 flex items-center justify-between w-full px-4 py-3 md:px-6 md:py-4 max-w-[1325px] mx-auto transition-all duration-700 container",
           heroReady ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
         )}>
           <a href="/" className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
@@ -1119,6 +1222,8 @@ const CourseLanding = () => {
           </div>
         </div>
       </header>
+        </>
+      )}
 
       {/* ═══════════════════════════════════════════
           BLOCK 2: COMPARISON (Evolution)
@@ -1166,7 +1271,7 @@ const CourseLanding = () => {
           </div>
 
           {/* Premium Urgency Banner (Interactive) */}
-          <StreamSelectorBanner dbStreams={dbStreams} />
+          <StreamSelectorBannerMemo dbStreams={dbStreams} />
 
           {/* Tab switcher */}
           <div className="flex gap-1 bg-white/[0.04] border border-white/[0.07] rounded-xl p-1 mb-8 max-w-xs mx-auto">
@@ -1196,19 +1301,23 @@ const CourseLanding = () => {
             </button>
           </div>
 
-          <div className="relative min-h-[600px]">
-            <div className={pricingTab === "groups" ? "block animate-in fade-in zoom-in-95 duration-300" : "hidden"}>
-              <PricingCards onBooking={() => scrollToForm("pricing_groups")} dbPrices={dbPrices} />
-            </div>
+          <div className="relative">
+            {pricingTab === "groups" && (
+              <div className="animate-in fade-in duration-200">
+                <PricingCards onBooking={() => scrollToForm("pricing_groups")} dbPrices={dbPrices} />
+              </div>
+            )}
             
-            <div className={pricingTab === "individual" ? "block animate-in fade-in zoom-in-95 duration-300" : "hidden"}>
-              <IndividualPricingCards
-                onBooking={() => scrollToForm("pricing_individual")}
-                mgBasePrice={dbPrices?.mini_group?.price_eur ?? 499}
-                indBasePrice={dbPrices?.individual?.price_eur ?? 799}
-                addons={dbAddons}
-              />
-            </div>
+            {pricingTab === "individual" && (
+              <div className="animate-in fade-in duration-200">
+                <IndividualPricingCards
+                  onBooking={() => scrollToForm("pricing_individual")}
+                  mgBasePrice={dbPrices?.mini_group?.price_eur ?? 499}
+                  indBasePrice={dbPrices?.individual?.price_eur ?? 799}
+                  addons={dbAddons}
+                />
+              </div>
+            )}
           </div>
 
           {/* Trust footer */}

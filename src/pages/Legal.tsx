@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { FileText, Shield, Cookie, CreditCard, RefreshCw, ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SeoHead } from "@/components/seo/SeoHead";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -145,9 +146,21 @@ export default function Legal() {
 
   const activeTab = tab as Tab;
   const content = CONTENT[activeTab];
+  const seoDescriptions: Record<Tab, string> = {
+    terms: "Публичная оферта и условия оказания образовательных услуг Sdadim.eu.",
+    privacy: "Политика конфиденциальности Sdadim.eu и правила обработки персональных данных.",
+    cookies: "Политика cookies Sdadim.eu и информация об аналитических технологиях сайта.",
+    subscription: "Условия доступа к материалам, платформе и сопровождению курса Sdadim.eu.",
+    refund: "Правила возврата средств и порядок подачи запроса на возврат в Sdadim.eu.",
+  };
 
   return (
     <main className="pt-24 pb-20 px-4">
+      <SeoHead
+        title={`${content.title} | Сдадим`}
+        description={seoDescriptions[activeTab]}
+        canonicalUrl={`https://sdadim.eu/legal/${activeTab}`}
+      />
       <div className="max-w-3xl mx-auto">
 
         {/* Back */}

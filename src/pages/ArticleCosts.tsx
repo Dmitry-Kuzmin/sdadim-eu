@@ -39,6 +39,15 @@ function useSEO() {
     setMeta('meta[property="og:title"]', "property", "Цены на водительские права в Испании 2026 + Калькулятор");
     setMeta('meta[property="og:image"]', "property", "https://sdadim.eu/assets/blog/tseny-na-prava.jpg");
     setMeta('meta[property="og:url"]', "property", "https://sdadim.eu/blog/tseny-na-prava");
+    setMeta('meta[property="og:type"]', "property", "article");
+
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = "https://sdadim.eu/blog/tseny-na-prava";
 
     return () => { document.title = prev; };
   }, []);
