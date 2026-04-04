@@ -201,10 +201,11 @@ async function prerender() {
 
     browser = await browserImpl.launch(launchOptions);
 
-    // Patterns for external requests that hang in the CI/build environment.
-    // Aborted immediately so React renders with hard-coded fallbacks instead of waiting.
+    // Analytics / tracking services that hang or are irrelevant during prerender.
+    // Supabase is intentionally NOT in this list — article pages fetch their content
+    // from Supabase, and the Vercel build environment has full internet access, so we
+    // let those requests through so the Article component can render real content.
     const ABORT_PATTERNS = [
-      "supabase.co",
       "mc.yandex.ru",
       "mc.yandex.com",
       "crisp.chat",
@@ -248,13 +249,13 @@ async function prerender() {
               (root.textContent && root.textContent.trim().length > 30)
             );
           },
-          { timeout: 30000 }
+          { timeout: 60000 }
         );
         if (expectedCanonical) {
           await page.waitForFunction(
             (canonical) =>
               document.querySelector('link[rel="canonical"]')?.getAttribute("href") === canonical,
-            { timeout: 30000 },
+            { timeout: 60000 },
             expectedCanonical
           );
         }
