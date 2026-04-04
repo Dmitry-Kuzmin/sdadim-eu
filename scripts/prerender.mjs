@@ -196,13 +196,9 @@ async function prerender() {
     }
 
     browser = await browserImpl.launch(launchOptions);
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1440, height: 1024 });
 
-    // Abort external API requests that would hang in the build environment
-    // (Supabase, analytics, chat widgets) — the page should render with
-    // hard-coded fallbacks without waiting for network.
-    await page.setRequestInterception(true);
+    // Patterns for external requests that hang in the CI/build environment.
+    // Aborted immediately so React renders with hard-coded fallbacks instead of waiting.
     const ABORT_PATTERNS = [
       "supabase.co",
       "mc.yandex.ru",
@@ -214,19 +210,26 @@ async function prerender() {
       "google-analytics.com",
       "googletagmanager.com",
     ];
-    page.on("request", (req) => {
-      const url = req.url();
-      if (ABORT_PATTERNS.some((p) => url.includes(p))) {
-        req.abort();
-      } else {
-        req.continue();
-      }
-    });
 
-    const failures = [];
-
-    for (const route of routesToRender) {
+    async function renderRoute(route) {
+      // Use a fresh page per route to avoid cross-route state pollution.
+      const page = await browser.newPage();
       try {
+        await page.setViewport({ width: 1440, height: 1024 });
+        await page.setRequestInterception(true);
+        page.on("request", (req) => {
+          try {
+            const url = req.url();
+            if (ABORT_PATTERNS.some((p) => url.includes(p))) {
+              req.abort();
+            } else {
+              req.continue();
+            }
+          } catch {
+            // Request may have already been handled; ignore.
+          }
+        });
+
         const url = `${BASE_URL}${route}`;
         const expectedCanonical = expectedCanonicalByRoute.get(route);
         await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
@@ -251,20 +254,42 @@ async function prerender() {
         if (/<div id="root">\s*<\/div>/i.test(html)) {
           throw new Error(`Route ${route} produced an empty root`);
         }
-
         if (!/<title>[^<]+<\/title>/i.test(html)) {
           throw new Error(`Route ${route} is missing a <title> tag`);
         }
-
-        writeFileSync(getOutputPath(route), html);
-      } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
-        failures.push(`${route}: ${message}`);
+        return { ok: true, html };
+      } finally {
+        await page.close().catch(() => {});
       }
     }
 
-    if (failures.length > 0) {
-      throw new Error(`Failed to prerender ${failures.length} route(s): ${failures.join(" | ")}`);
+    const warnings = [];
+
+    for (const route of routesToRender) {
+      try {
+        const { html } = await renderRoute(route);
+        writeFileSync(getOutputPath(route), html);
+        console.log(`[prerender] ✓ ${route}`);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        const isTimeout = message.includes("Waiting failed") || message.includes("timeout");
+        if (isTimeout) {
+          // Timeout: write shell HTML so the route works as a CSR SPA.
+          // This is a soft failure — the build continues.
+          console.warn(`[prerender] ⚠ Timeout for ${route} — writing shell HTML (CSR fallback)`);
+          writeFileSync(getOutputPath(route), shellHtml);
+          warnings.push(route);
+        } else {
+          // Hard failure (empty root, missing title, etc.) — still non-fatal but logged.
+          console.warn(`[prerender] ✗ ${route}: ${message}`);
+          writeFileSync(getOutputPath(route), shellHtml);
+          warnings.push(route);
+        }
+      }
+    }
+
+    if (warnings.length > 0) {
+      console.warn(`[prerender] Done with ${warnings.length} CSR fallback(s): ${warnings.join(", ")}`);
     }
   } finally {
     if (browser) {

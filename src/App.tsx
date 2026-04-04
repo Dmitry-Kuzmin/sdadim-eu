@@ -34,6 +34,27 @@ function ScrollToTop() {
   return null;
 }
 
+// Yandex Metrika SPA: fire a hit on every route change
+function YandexMetrikaTracker() {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    const url = pathname + search;
+    try {
+      if (typeof window !== "undefined" && typeof (window as any).ym === "function") {
+        (window as any).ym(108379913, "hit", window.location.href, {
+          title: document.title,
+          referer: document.referrer,
+        });
+      }
+    } catch {
+      // Metrika not loaded yet — ignore silently
+    }
+  }, [pathname, search]);
+
+  return null;
+}
+
 function LayoutContent() {
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -67,6 +88,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <YandexMetrikaTracker />
       <LayoutContent />
     </BrowserRouter>
   );
