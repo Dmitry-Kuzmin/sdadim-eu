@@ -48,7 +48,7 @@ export function ArticleAccordion({ items, title }: ArticleAccordionProps) {
       {title && (
         <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4">{title}</p>
       )}
-      <div className="divide-y divide-white/5 rounded-2xl border border-white/8 overflow-hidden">
+      <div className="divide-y divide-white/5 rounded-2xl border border-white/5 overflow-hidden">
         {items.map((item, i) => (
           <div key={i}>
             <button
@@ -151,10 +151,10 @@ interface ArticleTableProps {
 
 export function ArticleTable({ headers, rows, caption }: ArticleTableProps) {
   return (
-    <div className="my-8 not-prose overflow-x-auto rounded-2xl border border-white/8">
+    <div className="my-8 not-prose overflow-x-auto rounded-2xl border border-white/5">
       <table className="w-full min-w-[480px] text-sm">
         <thead>
-          <tr className="border-b border-white/8 bg-white/[0.03]">
+          <tr className="border-b border-white/5 bg-white/[0.03]">
             {headers.map((h, i) => (
               <th
                 key={i}
@@ -206,8 +206,8 @@ interface ArticleTabsProps {
 export function ArticleTabs({ tabs }: ArticleTabsProps) {
   const [active, setActive] = useState(0);
   return (
-    <div className="my-8 not-prose rounded-2xl border border-white/8 overflow-hidden">
-      <div className="flex border-b border-white/8 bg-white/[0.02] overflow-x-auto">
+    <div className="my-8 not-prose rounded-2xl border border-white/5 overflow-hidden">
+      <div className="flex border-b border-white/5 bg-white/[0.02] overflow-x-auto">
         {tabs.map((tab, i) => (
           <button
             key={i}
@@ -242,7 +242,7 @@ interface ArticleSpoilerProps {
 export function ArticleSpoiler({ label, children }: ArticleSpoilerProps) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="my-6 not-prose rounded-xl border border-white/8 overflow-hidden">
+    <div className="my-6 not-prose rounded-xl border border-white/5 overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center gap-3 px-5 py-3.5 text-sm font-semibold text-zinc-300 hover:text-white hover:bg-white/[0.03] transition-colors text-left"
@@ -326,7 +326,7 @@ export function ArticleCardGrid({ cards, cols = 2 }: ArticleCardGridProps) {
       {cards.map((card, i) => (
         <div
           key={i}
-          className="rounded-2xl border border-white/8 bg-white/[0.02] p-5 hover:border-white/15 hover:bg-white/[0.04] transition-all"
+          className="rounded-2xl bg-[#0c1523] p-5 hover:bg-[#0f1a2b] transition-all"
         >
           {card.icon && <div className="text-2xl mb-3">{card.icon}</div>}
           <div className="flex items-start justify-between gap-2 mb-2">
@@ -462,7 +462,7 @@ export function ArticleStats({ stats }: ArticleStatsProps) {
   return (
     <div className="my-8 not-prose grid grid-cols-2 sm:grid-cols-4 gap-4">
       {stats.map((stat, i) => (
-        <div key={i} className="rounded-2xl border border-white/8 bg-white/[0.02] p-5 text-center">
+        <div key={i} className="rounded-2xl bg-[#0c1523] p-5 text-center">
           <div className="text-3xl md:text-4xl font-black text-white tracking-tight mb-1">{stat.value}</div>
           <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wide">{stat.label}</div>
           {stat.note && <div className="text-[11px] text-zinc-600 mt-1">{stat.note}</div>}
@@ -490,7 +490,7 @@ export function ArticleLinkCard({ href, title, description, external }: ArticleL
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className="my-6 not-prose flex items-center gap-4 p-4 rounded-2xl border border-white/8 bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04] transition-all group no-underline block"
+      className="my-6 not-prose flex items-center gap-4 p-4 rounded-2xl bg-[#0c1523] hover:bg-[#0f1a2b] transition-all group no-underline block"
     >
       <div className="flex-1 min-w-0">
         <p className="text-sm font-bold text-white group-hover:text-blue-300 transition-colors truncate">{title}</p>
@@ -715,10 +715,10 @@ function ComparisonCell({ value }: { value: boolean | string }) {
 
 export function ArticleComparison({ headerA, headerB, rows }: ArticleComparisonProps) {
   return (
-    <div className="my-8 not-prose overflow-x-auto rounded-2xl border border-white/8">
+    <div className="my-8 not-prose overflow-x-auto rounded-2xl border border-white/5">
       <table className="w-full min-w-[400px] text-sm">
         <thead>
-          <tr className="border-b border-white/8">
+          <tr className="border-b border-white/5">
             <th className="px-5 py-4 text-left text-xs font-bold uppercase tracking-widest text-zinc-600 w-1/2">
               Параметр
             </th>

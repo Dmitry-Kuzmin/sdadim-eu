@@ -164,7 +164,7 @@ export default function ArticleExamErrors() {
             {/* ── Как работает система оценки ── */}
             <h2
               id="sistema-otsenki"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               Как работает система оценки DGT
             </h2>
@@ -227,7 +227,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="comprobaciones-previas"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               1. Предварительные проверки (Comprobaciones previas)
             </h2>
@@ -262,7 +262,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="instalacion"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               2. Посадка и регулировка (Instalación en el vehículo)
             </h2>
@@ -311,7 +311,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="incorporacion"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               3. Въезд на проезжую часть (Incorporación a la circulación)
             </h2>
@@ -350,7 +350,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="progresion"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               4. Движение по дороге (Progresión normal)
             </h2>
@@ -436,7 +436,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="desplazamientos"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               5. Перестроения (Desplazamientos laterales)
             </h2>
@@ -483,7 +483,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="adelantamiento"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               6. Обгон (Adelantamiento)
             </h2>
@@ -514,7 +514,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="cambios"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               7. Повороты и развороты (Cambios de sentido y dirección)
             </h2>
@@ -546,7 +546,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="intersecciones"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               8. Перекрёстки и кольцевые (Intersecciones y rotondas)
             </h2>
@@ -604,7 +604,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="senales"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               9. Дорожные знаки и светофоры (Señales y semáforos)
             </h2>
@@ -632,7 +632,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="peatones"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               10–11. Ж/д переезды и пешеходы
             </h2>
@@ -664,7 +664,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="autopistas"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               12. Въезд и выезд с автомагистралей (Autopistas y autovías)
             </h2>
@@ -710,7 +710,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="estacionamiento"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               13. Остановки и парковка (Paradas y estacionamientos)
             </h2>
@@ -744,7 +744,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="conduccion-eficiente"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               14. Экономичное вождение (Conducción eficiente)
             </h2>
@@ -772,7 +772,7 @@ export default function ArticleExamErrors() {
             ══════════════════════════════════════════════════════════ */}
             <h2
               id="strategiya"
-              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24"
+              className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24"
             >
               Стратегия: как пройти все 14 разделов без провала
             </h2>
@@ -866,7 +866,7 @@ export default function ArticleExamErrors() {
           <aside className="hidden lg:block lg:col-span-4">
             <div className="sticky top-24 space-y-5">
               {/* TOC */}
-              <div className="rounded-xl border border-white/8 bg-white/[0.03] p-5">
+              <div className="rounded-xl bg-[#0c1523] p-5">
                 <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4">
                   Содержание
                 </p>

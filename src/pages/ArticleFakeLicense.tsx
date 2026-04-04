@@ -142,7 +142,7 @@ export default function ArticleFakeLicense() {
             <ArticleDivider label="Суровая реальность" />
 
             {/* ── РАЗДЕЛ 1 ── */}
-            <h2 id="pochemu-vibyrayut" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="pochemu-vibyrayut" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               Почему люди вообще покупают «левые» права?
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -160,7 +160,7 @@ export default function ArticleFakeLicense() {
             </p>
 
             {/* ── РАЗДЕЛ 2 ── */}
-            <h2 id="nakazanie" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="nakazanie" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               Что грозит за поддельные права в Испании?
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -208,7 +208,7 @@ export default function ArticleFakeLicense() {
 
 
             {/* ── РАЗДЕЛ 3 ── */}
-            <h2 id="kak-legalno" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="kak-legalno" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               Единственное решение: легальное получение
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -252,7 +252,7 @@ export default function ArticleFakeLicense() {
             <ArticleDivider />
 
             {/* ── Итоговый чеклист ── */}
-            <h2 id="chekList" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="chekList" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               Короткий чек-лист здравого смысла
             </h2>
 
@@ -263,7 +263,7 @@ export default function ArticleFakeLicense() {
             ]} />
 
             {/* Share */}
-            <div className="mt-12 pt-8 border-t border-white/8">
+            <div className="mt-12 pt-8 border-t border-white/5">
               <p className="text-sm font-semibold text-zinc-400 mb-2">Знаете кого-то, кто хочет рискнуть?</p>
               <p className="text-sm text-zinc-600">Отправьте им эту статью. Возможно, это спасет их от реального срока. 🙌</p>
             </div>
@@ -275,7 +275,7 @@ export default function ArticleFakeLicense() {
             <div className="sticky top-24 space-y-5">
 
               {/* TOC */}
-              <div className="rounded-xl border border-white/8 bg-white/[0.03] p-5">
+              <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
                 <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4">Содержание</p>
                 <nav className="space-y-2 text-sm">
                   {[

@@ -148,7 +148,7 @@ export default function ArticleEkoDrive() {
             <ArticleDivider label="12 техник экономичного вождения" />
 
             {/* ── ТЕХНИКА 1 ── */}
-            <h2 id="plavniy-razgon" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="plavniy-razgon" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               1. Плавный разгон — педаль как кран топлива
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -170,7 +170,7 @@ export default function ArticleEkoDrive() {
             ]} />
 
             {/* ── ТЕХНИКА 2 ── */}
-            <h2 id="chtenie-dorogi" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="chtenie-dorogi" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               2. «Чтение дороги» — взгляд вдаль
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -191,7 +191,7 @@ export default function ArticleEkoDrive() {
             </p>
 
             {/* ── ТЕХНИКА 3 ── */}
-            <h2 id="skatyvanie-inertsiya" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="skatyvanie-inertsiya" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               3. Инерция — бесплатные километры
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -239,7 +239,7 @@ export default function ArticleEkoDrive() {
             ]} />
 
             {/* ── ТЕХНИКА 4 ── */}
-            <h2 id="skorost" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="skorost" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               4. Скорость и аэродинамика: почему 120 ≠ 150
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -269,7 +269,7 @@ export default function ArticleEkoDrive() {
             <ArticleBanner variant="default" basePrice={199} />
 
             {/* ── МИФЫ ── */}
-            <h2 id="mify" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="mify" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               5. Мифы «бывалых» водителей — разбираем по пунктам
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-6">
@@ -303,7 +303,7 @@ export default function ArticleEkoDrive() {
             />
 
             {/* ── ОСТАЛЬНЫЕ ТЕХНИКИ ── */}
-            <h2 id="obsluzhivanie" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="obsluzhivanie" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               6–13. Ещё восемь факторов, которые вы недооцениваете
             </h2>
 
@@ -349,7 +349,7 @@ export default function ArticleEkoDrive() {
             {/* Гибриды и электромобили */}
             <ArticleDivider label="Гибриды и электромобили" />
 
-            <h2 id="gibrid-elektro" className="text-2xl font-black text-white mt-6 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="gibrid-elektro" className="text-2xl font-black text-white mt-6 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               Особенности гибридов и электромобилей
             </h2>
 
@@ -402,7 +402,7 @@ export default function ArticleEkoDrive() {
             <ArticleDivider />
 
             {/* DGT Quiz hints */}
-            <h2 id="voprosy-dgt" className="text-2xl font-black text-white mt-6 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="voprosy-dgt" className="text-2xl font-black text-white mt-6 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               Как эта тема встречается в вопросах DGT
             </h2>
 
@@ -434,7 +434,7 @@ export default function ArticleEkoDrive() {
             </ArticleSpoiler>
 
             {/* ── МИНИ-ТЕСТ DGT ── */}
-            <h2 id="mini-test" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="mini-test" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               Мини-тест: проверь, понял ли ты тему
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-0">
@@ -449,7 +449,7 @@ export default function ArticleEkoDrive() {
             />
 
             {/* Итоговый чеклист */}
-            <h2 id="chekList" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="chekList" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               Чеклист eco-driver: что сделать прямо сейчас
             </h2>
 
@@ -468,7 +468,7 @@ export default function ArticleEkoDrive() {
             <ArticleBanner variant="default" basePrice={199} />
 
             {/* Share */}
-            <div className="mt-12 pt-8 border-t border-white/8">
+            <div className="mt-12 pt-8 border-t border-white/5">
               <p className="text-sm font-semibold text-zinc-400 mb-2">Была полезна статья?</p>
               <p className="text-sm text-zinc-600">Поделитесь ею с теми, кто готовится к экзамену DGT — они скажут спасибо на экзамене 🙌</p>
             </div>
@@ -480,7 +480,7 @@ export default function ArticleEkoDrive() {
             <div className="sticky top-24 space-y-5">
 
               {/* TOC */}
-              <div className="rounded-xl border border-white/8 bg-white/[0.03] p-5">
+              <div className="rounded-xl bg-[#0c1523] p-5">
                 <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4">Содержание</p>
                 <nav className="space-y-2 text-sm">
                   {[
@@ -526,7 +526,7 @@ export default function ArticleEkoDrive() {
               </div>
 
               {/* Stat card */}
-              <div className="rounded-xl border border-white/8 bg-white/[0.02] p-5 text-center">
+              <div className="rounded-xl bg-[#0c1523] p-5 text-center">
                 <p className="text-3xl font-black text-white mb-1">9/10</p>
                 <p className="text-xs text-zinc-500 uppercase tracking-wider font-bold">студентов сдают с первого раза</p>
                 <div className="mt-3 pt-3 border-t border-white/5">

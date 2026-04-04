@@ -24,7 +24,7 @@ function Section({ id, title, children }: { id: string; title: string; children:
       <div className="flex items-center gap-3 mb-2">
         <code className="text-[11px] text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded font-mono">{`<${id.replace(/-/g,"")}/>`}</code>
       </div>
-      <h2 className="text-xl font-black text-white mb-6 border-b border-white/8 pb-3">{title}</h2>
+      <h2 className="text-xl font-black text-white mb-6 border-b border-white/5 pb-3">{title}</h2>
       {children}
     </section>
   );
@@ -93,7 +93,7 @@ export default function ArticleKitDemo() {
             <div className="mt-4">
               <ArticleBanner variant="inline" basePrice={199} />
             </div>
-            <pre className="mt-4 text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`import { ArticleBanner } from "@/components/ui/article";
+            <pre className="mt-4 text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`import { ArticleBanner } from "@/components/ui/article";
 
 // В середине статьи:
 <ArticleBanner variant="compact" />
@@ -115,7 +115,7 @@ export default function ArticleKitDemo() {
             <ArticleCallout type="warning">Данные в базе вопросов DGT обновляются каждые 6 месяцев. Проверяйте актуальность.</ArticleCallout>
             <ArticleCallout type="danger">Без прохождения Psicotécnico вас не допустят к экзамену. Не откладывайте!</ArticleCallout>
             <ArticleCallout type="success">Студенты с ежедневной практикой 20 минут сдают с первого раза в 9 из 10 случаев.</ArticleCallout>
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleCallout type="warning" title="Важно знать">
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleCallout type="warning" title="Важно знать">
   Текст врезки...
 </ArticleCallout>`}</pre>
           </Section>
@@ -132,7 +132,7 @@ export default function ArticleKitDemo() {
                 { question: "Что происходит, если не сдал с первого раза?", answer: "Вы можете пересдать через 30 дней. Студентам нашего курса мы предоставляем бессрочный доступ к материалам и поддержку куратора до успешной сдачи." },
               ]}
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleAccordion
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleAccordion
   title="FAQ"
   items={[
     { question: "...", answer: "..." },
@@ -153,7 +153,7 @@ export default function ArticleKitDemo() {
                 <li>• 2 фотографии паспортного формата</li>
               </ul>
             </ArticleSpoiler>
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleSpoiler label="Полный список документов">
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleSpoiler label="Полный список документов">
   <p>Контент внутри...</p>
 </ArticleSpoiler>`}</pre>
           </Section>
@@ -193,7 +193,7 @@ export default function ArticleKitDemo() {
                 },
               ]}
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleTabs
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleTabs
   tabs={[
     { label: "Категория B", content: <p>...</p> },
     { label: "Категория A", content: <p>...</p> },
@@ -210,7 +210,7 @@ export default function ArticleKitDemo() {
               author="Анна Котова"
               role="Мадрид, поток #12"
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleQuote
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleQuote
   text="..."
   author="Имя Фамилия"
   role="Должность"
@@ -239,7 +239,7 @@ export default function ArticleKitDemo() {
                 <ArticleList type="number" items={["Изучи теорию", "Пройди тесты", "Сдай экзамен"]} />
               </div>
             </div>
-            <pre className="mt-4 text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleList
+            <pre className="mt-4 text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleList
   type="check"  // check | cross | arrow | number
   title="Что входит"
   items={["Пункт A", "Пункт B"]}
@@ -261,7 +261,7 @@ export default function ArticleKitDemo() {
               ]}
               caption="Актуально для 2024–2025 года. Цены могут отличаться в зависимости от региона."
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleTable
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleTable
   headers={["Этап", "Срок", "Стоимость"]}
   rows={[["Psicotécnico", "30 мин", "€40–60"]]}
   caption="Подпись таблицы"
@@ -284,7 +284,7 @@ export default function ArticleKitDemo() {
                 { feature: "Цена", a: "€350+", b: "от €199" },
               ]}
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleComparison
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleComparison
   headerA="Автошкола"
   headerB="Sdadim"
   rows={[
@@ -306,7 +306,7 @@ export default function ArticleKitDemo() {
                 { icon: "🤖", title: "AI-помощник", description: "Задавай вопросы в чат и получай ответы за 30 секунд.", badge: "24/7" },
               ]}
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleCardGrid
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleCardGrid
   cols={3}  // 2 | 3
   cards={[
     { icon: "📚", title: "...", description: "...", badge: "DGT" },
@@ -326,7 +326,7 @@ export default function ArticleKitDemo() {
                 { value: "14", label: "Потоков прошло", note: "с 2022 года" },
               ]}
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleStats
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleStats
   stats={[
     { value: "9/10", label: "Сдают с первого раза", note: "2024" },
   ]}
@@ -348,7 +348,7 @@ export default function ArticleKitDemo() {
               description="Запись на экзамен, проверка статуса, документы"
               external
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleLinkCard
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleLinkCard
   href="https://..."
   title="Заголовок"
   description="Описание"
@@ -365,7 +365,7 @@ export default function ArticleKitDemo() {
               alt="Студентка с водительским удостоверением Испании"
               caption="Алина из Барселоны после успешной сдачи теории DGT, поток #11"
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleImage
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleImage
   src="/assets/photo.png"
   alt="Описание для SEO"
   caption="Подпись под фото"
@@ -382,7 +382,7 @@ export default function ArticleKitDemo() {
               youtubeId="dQw4w9WgXcQ"
               caption="Пример: разбор самых сложных вопросов DGT 2024"
             />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleVideo
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleVideo
   youtubeId="VIDEO_ID"
   caption="Подпись"
 />
@@ -397,12 +397,12 @@ export default function ArticleKitDemo() {
           <Section id="divider" title="Divider — разделитель">
             <ArticleDivider />
             <ArticleDivider label="Метод подготовки" />
-            <pre className="text-xs bg-white/[0.03] border border-white/8 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleDivider />
+            <pre className="text-xs bg-white/[0.03] border border-white/5 rounded-xl p-4 overflow-x-auto text-zinc-400 font-mono">{`<ArticleDivider />
 <ArticleDivider label="Раздел" />`}</pre>
           </Section>
 
           {/* Footer note */}
-          <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 text-center">
+          <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-center">
             <p className="text-sm font-bold text-white mb-1">Готово к использованию</p>
             <p className="text-sm text-zinc-500">
               Все компоненты в <code className="text-blue-300">src/components/ui/article.tsx</code>

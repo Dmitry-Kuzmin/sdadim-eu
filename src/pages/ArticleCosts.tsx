@@ -247,7 +247,7 @@ export default function ArticleCosts() {
               fullWidth
             />
 
-            <h2 className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8">
+            <h2 className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5">
               Из чего состоят базовые траты?
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -290,7 +290,7 @@ export default function ArticleCosts() {
 
             <ArticleDivider label="Можно ли сэкономить?" />
 
-            <h2 className="text-2xl font-black text-white mt-8 mb-4 pb-3 border-b border-white/8">
+            <h2 className="text-2xl font-black text-white mt-8 mb-4 pb-3 border-b border-white/5">
               Как не переплатить "посредникам"?
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -330,7 +330,7 @@ export default function ArticleCosts() {
           <aside className="hidden lg:block lg:col-span-4">
             <div className="sticky top-24 space-y-5">
               
-              <div className="rounded-xl border border-white/8 bg-white/[0.03] p-5">
+              <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
                 <div className="flex justify-between items-center mb-3">
                   <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">Факт DGT</p>
                   <Coins className="w-4 h-4 text-amber-400" />

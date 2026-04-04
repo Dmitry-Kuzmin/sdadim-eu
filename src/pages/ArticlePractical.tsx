@@ -120,7 +120,7 @@ export default function ArticlePractical() {
             <ArticleDivider label="До запуска двигателя (Comprobaciones previas)" />
 
             {/* ── РАЗДЕЛ 1: ВОПРОСЫ ── */}
-            <h2 id="voprosy-ekzamenatora" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="voprosy-ekzamenatora" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               1. Неожиданный допрос до старта
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -168,7 +168,7 @@ export default function ArticlePractical() {
 
 
             {/* ── РАЗДЕЛ 2: ПСИХОЛОГИЯ ── */}
-            <h2 id="nastroy-i-posadka" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="nastroy-i-posadka" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               2. Рутина, которая спасает нервы
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -203,7 +203,7 @@ export default function ArticlePractical() {
             <ArticleDivider label="На дороге (Circulación)" />
 
             {/* ── РАЗДЕЛ 3: МАРШРУТ ── */}
-            <h2 id="staruem" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="staruem" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               3. Заводим авто и стартуем
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -217,7 +217,7 @@ export default function ArticlePractical() {
             />
 
             {/* ── РАЗДЕЛ 4: ЛОВУШКИ ── */}
-            <h2 id="lovushki" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="lovushki" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               4. Остерегайтесь «Ловушек» экзаменатора
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -243,7 +243,7 @@ export default function ArticlePractical() {
             />
 
             {/* ── РАЗДЕЛ 5: ПРАКТИКА И ОШИБКИ ── */}
-            <h2 id="sistemnaya-podgotovka" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/8 scroll-mt-24">
+            <h2 id="sistemnaya-podgotovka" className="text-2xl font-black text-white mt-12 mb-4 pb-3 border-b border-white/5 scroll-mt-24">
               5. Главное правило: не спешите (Sin prisa)
             </h2>
             <p className="text-[15px] text-zinc-300 leading-[1.85] mb-4">
@@ -286,7 +286,7 @@ export default function ArticlePractical() {
             <div className="sticky top-24 space-y-5">
 
               {/* TOC */}
-              <div className="rounded-xl border border-white/8 bg-white/[0.03] p-5">
+              <div className="rounded-xl border border-white/5 bg-white/[0.03] p-5">
                 <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4">Содержание</p>
                 <nav className="space-y-2 text-sm">
                   {[

@@ -122,7 +122,7 @@ function Skeleton() {
           </div>
         </div>
         <div className="hidden lg:block lg:col-span-4">
-          <div className="rounded-xl bg-white/[0.03] border border-white/8 h-48" />
+          <div className="rounded-xl bg-white/[0.03] border border-white/5 h-48" />
         </div>
       </div>
     </div>
@@ -241,7 +241,7 @@ export default function Article() {
             {/* Mobile: TOC + Share */}
             <div className="lg:hidden space-y-3 mb-8">
               {/* Share row */}
-              <div className="flex items-center justify-between p-4 rounded-xl border border-white/8 bg-white/[0.03]">
+              <div className="flex items-center justify-between p-4 rounded-xl bg-[#0c1523]">
                 <div className="flex items-center gap-1.5 text-sm text-zinc-500">
                   <Clock className="w-4 h-4" />
                   {post.reading_time} мин чтения
@@ -267,7 +267,7 @@ export default function Article() {
 
               {/* Mobile TOC */}
               {headings.length > 0 && (
-                <div className="rounded-xl border border-white/8 bg-white/[0.03] overflow-hidden">
+                <div className="rounded-xl bg-[#0c1523] overflow-hidden">
                   <button
                     onClick={() => setTocOpen(!tocOpen)}
                     className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-zinc-300 hover:text-white transition-colors"
@@ -276,7 +276,7 @@ export default function Article() {
                     {tocOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
                   {tocOpen && (
-                    <nav className="px-4 pb-4 space-y-2 max-h-56 overflow-y-auto border-t border-white/8 pt-3">
+                    <nav className="px-4 pb-4 space-y-2 max-h-56 overflow-y-auto border-t border-white/5 pt-3">
                       {headings.map((h, i) => (
                         <a
                           key={i}
@@ -300,7 +300,7 @@ export default function Article() {
 
             {/* Cover image */}
             {post.cover_image && (
-              <div className="rounded-2xl overflow-hidden mb-10 border border-white/8">
+              <div className="rounded-2xl overflow-hidden mb-10">
                 <img
                   src={post.cover_image}
                   alt={post.title}
@@ -314,7 +314,7 @@ export default function Article() {
               className="prose prose-invert max-w-none
                 prose-headings:font-black prose-headings:text-white prose-headings:scroll-mt-24
                 prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pb-3
-                prose-h2:border-b prose-h2:border-white/8
+                prose-h2:border-b prose-h2:border-white/5
                 prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-3
                 prose-p:text-zinc-300 prose-p:leading-[1.85] prose-p:text-[15px]
                 prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
@@ -323,14 +323,14 @@ export default function Article() {
                 prose-li:marker:text-blue-400 prose-li:leading-relaxed prose-li:text-[15px]
                 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-500/5
                 prose-blockquote:rounded-r-xl prose-blockquote:text-zinc-300 prose-blockquote:py-1
-                prose-table:text-zinc-300 prose-thead:border-white/10 prose-tr:border-white/8
+                prose-table:text-zinc-300 prose-thead:border-white/10 prose-tr:border-white/5
                 prose-th:text-white prose-th:font-semibold
                 prose-code:text-blue-300 prose-code:bg-blue-500/10 prose-code:rounded prose-code:px-1"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
             {/* Share section */}
-            <div className="mt-12 pt-8 border-t border-white/8">
+            <div className="mt-12 pt-8 border-t border-white/5">
               <p className="text-sm font-semibold text-zinc-400 mb-4">Поделиться статьёй</p>
               <div className="flex items-center gap-2 flex-wrap">
                 <button
@@ -357,13 +357,13 @@ export default function Article() {
 
             {/* Related articles */}
             {related.length > 0 && (
-              <div className="mt-14 pt-12 border-t border-white/8">
+              <div className="mt-14 pt-12 border-t border-white/5">
                 <h2 className="text-xl font-black text-white mb-6">Читайте также</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {related.map((r) => (
                     <article
                       key={r.id}
-                      className="group cursor-pointer rounded-2xl border border-white/8 bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04] transition-all p-5"
+                      className="group cursor-pointer rounded-2xl bg-[#0c1523] hover:bg-[#0f1a2b] transition-all p-5"
                       onClick={() => navigate(`/blog/${r.slug}`)}
                     >
                       <span className="text-[10px] uppercase tracking-widest font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-full mb-3 inline-block">
@@ -419,7 +419,7 @@ export default function Article() {
           <aside className="hidden lg:block lg:col-span-4">
             <div className="sticky top-24 space-y-5">
               {/* Meta card */}
-              <div className="rounded-xl border border-white/8 bg-white/[0.03] p-5">
+              <div className="rounded-xl bg-[#0c1523] p-5">
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 text-sm text-zinc-400">
                     <Clock className="w-4 h-4 text-zinc-600" />
@@ -429,12 +429,12 @@ export default function Article() {
                     <Calendar className="w-4 h-4 text-zinc-600" />
                     <span>{publishedDate}</span>
                   </div>
-                  <div className="pt-4 border-t border-white/8">
+                  <div className="pt-4 border-t border-white/5">
                     <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Поделиться</p>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={handleTwitter}
-                        className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/8 bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                        className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/5 bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
                         title="Twitter"
                       >
                         <Twitter className="w-3.5 h-3.5" />
@@ -445,7 +445,7 @@ export default function Article() {
                           "w-8 h-8 flex items-center justify-center rounded-lg border transition-colors",
                           copied
                             ? "border-green-500/40 bg-green-500/10 text-green-400"
-                            : "border-white/8 bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white"
+                            : "border-white/5 bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white"
                         )}
                         title={copied ? "Скопировано!" : "Копировать ссылку"}
                       >
@@ -453,7 +453,7 @@ export default function Article() {
                       </button>
                       <button
                         onClick={handleNativeShare}
-                        className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/8 bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                        className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/5 bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
                         title="Поделиться"
                       >
                         <Share2 className="w-3.5 h-3.5" />
@@ -465,7 +465,7 @@ export default function Article() {
 
               {/* TOC */}
               {headings.length > 0 && (
-                <div className="rounded-xl border border-white/8 bg-white/[0.03] p-5">
+                <div className="rounded-xl bg-[#0c1523] p-5">
                   <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">Содержание</p>
                   <nav className="space-y-2">
                     {headings.map((h, i) => (
