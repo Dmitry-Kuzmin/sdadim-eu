@@ -1453,10 +1453,6 @@ const CourseLanding = () => {
         )}
       </AnimatePresence>
 
-      {/* ═══════════════════════════════════════════
-          CINEMATIC CTA FOOTER
-          ═══════════════════════════════════════════ */}
-      <CinematicHero onOpenForm={() => setFormModalOpen(true)} />
     </div>
   );
 };
