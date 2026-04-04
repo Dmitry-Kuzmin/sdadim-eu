@@ -199,6 +199,30 @@ async function prerender() {
     const page = await browser.newPage();
     await page.setViewport({ width: 1440, height: 1024 });
 
+    // Abort external API requests that would hang in the build environment
+    // (Supabase, analytics, chat widgets) — the page should render with
+    // hard-coded fallbacks without waiting for network.
+    await page.setRequestInterception(true);
+    const ABORT_PATTERNS = [
+      "supabase.co",
+      "mc.yandex.ru",
+      "mc.yandex.com",
+      "crisp.chat",
+      "posthog.com",
+      "sentry.io",
+      "paddle.com",
+      "google-analytics.com",
+      "googletagmanager.com",
+    ];
+    page.on("request", (req) => {
+      const url = req.url();
+      if (ABORT_PATTERNS.some((p) => url.includes(p))) {
+        req.abort();
+      } else {
+        req.continue();
+      }
+    });
+
     const failures = [];
 
     for (const route of routesToRender) {
@@ -211,13 +235,13 @@ async function prerender() {
             const root = document.querySelector("#root");
             return root && root.textContent && root.textContent.trim().length > 60;
           },
-          { timeout: 15000 }
+          { timeout: 30000 }
         );
         if (expectedCanonical) {
           await page.waitForFunction(
             (canonical) =>
               document.querySelector('link[rel="canonical"]')?.getAttribute("href") === canonical,
-            { timeout: 15000 },
+            { timeout: 30000 },
             expectedCanonical
           );
         }
