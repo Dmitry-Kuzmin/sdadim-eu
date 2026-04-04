@@ -25,7 +25,7 @@ const CATEGORIES = [
 
 function PostSkeleton() {
   return (
-    <div className="animate-pulse rounded-2xl border border-white/8 bg-white/[0.02] p-6">
+    <div className="animate-pulse rounded-2xl bg-[#0c1523] p-6">
       <div className="flex items-center gap-2 mb-4">
         <div className="h-5 bg-white/5 rounded-full w-16" />
         <div className="h-4 bg-white/5 rounded w-10" />
@@ -192,7 +192,7 @@ export default function Blog() {
                   {filtered.map((post) => (
                     <article
                       key={post.id}
-                      className="group flex flex-col cursor-pointer rounded-2xl border border-white/8 bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04] transition-all duration-200 overflow-hidden"
+                      className="group flex flex-col cursor-pointer rounded-2xl bg-[#0c1523] hover:bg-[#0f1a2b] transition-all duration-300 overflow-hidden"
                       onClick={() => navigate(`/blog/${post.slug}`)}
                     >
                       {/* Cover */}

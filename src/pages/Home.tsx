@@ -3,14 +3,12 @@ import { Link } from "react-router-dom";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { motion, AnimatePresence } from "framer-motion";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
-import { ArcGalleryHero } from "@/components/ui/arc-gallery-hero";
 import { FAQ } from "@/components/ui/faq-tabs";
 import { PricingCards, type DbPlanPrices } from "@/components/ui/pricing-cards";
 import { CourseComparison } from "@/components/ui/course/CourseComparison";
 import { CourseTimeline } from "@/components/ui/course/CourseTimeline";
 import { CourseChecklist } from "@/components/ui/course/CourseChecklist";
 import { IndividualPricingCards } from "@/components/ui/course/IndividualPricingCards";
-import { CinematicHero } from "@/components/ui/cinematic-landing-hero";
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 import { useCrispChat } from "@/hooks/useCrispChat";
 import { getSupabaseClient } from "@/lib/supabase";
@@ -47,8 +45,6 @@ import {
 import { cn } from "@/lib/utils";
 import { Analytics } from "@/lib/posthog";
 
-const ARC_IMAGES = Array.from({ length: 12 }, (_, i) => `/assets/landing/arc/img-${String(i + 1).padStart(2, '0')}.png`);
-
 /* ─────────────────────────────────────────────
    Scroll-reveal hook (IntersectionObserver)
    ───────────────────────────────────────────── */
@@ -68,27 +64,6 @@ function useReveal(threshold = 0.1) {
     return () => { io.disconnect(); clearTimeout(fallback); };
   }, [threshold]);
   return { ref, visible };
-}
-
-/* ─────────────────────────────────────────────
-   Animated counter
-   ───────────────────────────────────────────── */
-function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string }) {
-  const [display, setDisplay] = useState(0);
-  const { ref, visible } = useReveal(0.5);
-  useEffect(() => {
-    if (!visible) return;
-    let start = 0;
-    const duration = 1200;
-    const step = (ts: number) => {
-      if (!start) start = ts;
-      const p = Math.min((ts - start) / duration, 1);
-      setDisplay(Math.floor(p * value));
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [visible, value]);
-  return <span ref={ref}>{display}{suffix}</span>;
 }
 
 /* ─────────────────────────────────────────────
@@ -115,12 +90,6 @@ const LANDING_STYLES = `
 /* ─────────────────────────────────────────────
    DATA
    ───────────────────────────────────────────── */
-
-const HERO_STATS = [
-  { value: 9, suffix: "/10", label: "сдают с 1-й попытки" },
-  { value: 2, suffix: " мес", label: "средний срок подготовки" },
-  { value: 16000, suffix: "+", label: "вопросов DGT в базе" },
-];
 
 const TRUST_PILLS = [
   { text: "Только русский язык", icon: Globe },
@@ -733,9 +702,6 @@ const CourseLanding = () => {
   const [dbAddons, setDbAddons] = useState<{ addon_key: string; label: string; price_group: number; price_individual: number }[]>([]);
   const [dbStreams, setDbStreams] = useState<StreamInfo[] | null>(null);
 
-  // Для возможности сравнить старый и новый Hero экран
-  const [showNewHero, setShowNewHero] = useState(true);
-
   // Smart form state
   const [nameValue, setNameValue] = useState('');
   const [contactCategory, setContactCategory] = useState<'whatsapp' | 'telegram'>('whatsapp');
@@ -868,18 +834,7 @@ const CourseLanding = () => {
         canonicalUrl="https://sdadim.eu/"
       />
 
-      {/* Dev Toggle */}
-      <div className="fixed bottom-4 right-4 z-[9999]">
-        <button 
-          onClick={() => setShowNewHero(!showNewHero)} 
-          className="bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-1.5 rounded-lg text-xs font-semibold text-white backdrop-blur-md shadow-xl transition-all"
-        >
-          {showNewHero ? "Показать старый Hero" : "Показать новый Hero"}
-        </button>
-      </div>
-
-      {showNewHero ? (
-        <div className="relative">
+      <div className="relative">
           {/* Navbar (абсолютно позиционированный над HeroGeometric) */}
           <div className="absolute top-0 left-0 right-0 z-50">
             <nav className={cn(
@@ -964,266 +919,6 @@ const CourseLanding = () => {
 
           </HeroGeometric>
         </div>
-      ) : (
-        <>
-          {/* ═══════════════════════════════════════════
-              BLOCK 1: HERO — Arc Gallery (OLD VERSION)
-              ═══════════════════════════════════════════ */}
-
-          <header className="relative min-h-[100dvh] flex flex-col items-center overflow-hidden">
-        {/* Ambient background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-blue-600/[0.08] rounded-full blur-[140px] curso-glow-pulse" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-500/[0.05] rounded-full blur-[120px]" />
-          <div className="absolute top-[20%] left-[-5%] w-[300px] h-[300px] bg-violet-500/[0.04] rounded-full blur-[100px]" />
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }} />
-        </div>
-
-        {/* Navbar */}
-        <nav className={cn(
-          "relative z-50 flex items-center justify-between w-full px-4 py-3 md:px-6 md:py-4 max-w-[1325px] mx-auto transition-all duration-700 container",
-          heroReady ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
-        )}>
-          <a href="/" className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
-            <img src="/favicon-s.svg" alt="Sdadim" className="w-8 h-8 rounded-[22%] shadow-lg shadow-blue-500/20" />
-            <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-white/90 leading-none">Sdadim</span>
-              <span className="text-[9px] text-zinc-400 font-bold tracking-[0.1em] leading-tight uppercase mt-0.5 relative top-[1px]">by Skilyapp</span>
-            </div>
-          </a>
-
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400 mr-2">
-              <button onClick={scrollToHowItWorks} className="hover:text-white transition-colors">Формат курса</button>
-              <button onClick={() => {
-                const el = document.getElementById('pricing');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }} className="hover:text-white transition-colors">Тарифы</button>
-              <button onClick={() => {
-                const el = document.getElementById('faq');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }} className="hover:text-white transition-colors">FAQ</button>
-            </div>
-
-            <a
-              href="https://t.me/skilyapp_bot?start=course"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                if (typeof window !== "undefined" && (window as any).gtag) {
-                  (window as any).gtag("event", "conversion", {
-                    send_to: "AW-18034090184/LGu7CMTx0pMcEMjBqZdD",
-                  });
-                }
-              }}
-              className="hidden sm:inline-flex bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:shadow-lg hover:shadow-blue-500/20 transition-all active:scale-95 shadow-[0_0_15px_rgba(59,130,246,0.2)] items-center gap-2"
-            >
-              Начать учиться
-            </a>
-
-            {/* Mobile Burger */}
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile Flyout Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-0 left-0 w-full z-[100] bg-[#060a14]/95 backdrop-blur-3xl border-b border-white/10 px-6 py-8 shadow-2xl flex flex-col h-auto"
-            >
-              <div className="flex items-center justify-between mb-8">
-                <a href="/" className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
-                  <img src="/favicon-s.svg" alt="Sdadim" className="w-8 h-8 rounded-[22%] shadow-lg shadow-blue-500/20" />
-                  <div className="flex flex-col">
-                    <span className="text-xl font-bold tracking-tight text-white/90 leading-none">Sdadim</span>
-                    <span className="text-[9px] text-zinc-400 font-bold tracking-[0.1em] leading-tight uppercase mt-0.5 relative top-[1px]">by Skilyapp</span>
-                  </div>
-                </a>
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 text-zinc-400 hover:text-white transition-colors"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              <div className="flex flex-col gap-6 text-lg font-medium text-zinc-300">
-                <button 
-                  onClick={() => { setMobileMenuOpen(false); scrollToHowItWorks(); }}
-                  className="text-left w-full hover:text-white transition-colors"
-                >
-                  Формат курса
-                </button>
-                <button 
-                  onClick={() => { 
-                    setMobileMenuOpen(false); 
-                    const el = document.getElementById('pricing');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="text-left w-full hover:text-white transition-colors"
-                >
-                  Тарифы
-                </button>
-                <button 
-                  onClick={() => { 
-                    setMobileMenuOpen(false); 
-                    const el = document.getElementById('faq');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="text-left w-full hover:text-white transition-colors"
-                >
-                  Частые вопросы
-                </button>
-                
-                <hr className="border-white/10 my-2" />
-                
-                <a
-                  href="https://t.me/skilyapp_bot?start=course"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    if (typeof window !== "undefined" && (window as any).gtag) {
-                      (window as any).gtag("event", "conversion", {
-                        send_to: "AW-18034090184/LGu7CMTx0pMcEMjBqZdD",
-                      });
-                    }
-                  }}
-                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-5 py-4 rounded-xl font-semibold text-center mt-2 shadow-[0_0_15px_rgba(59,130,246,0.2)] block"
-                >
-                  Занять место
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Arc Gallery */}
-        <ArcGalleryHero
-          images={ARC_IMAGES}
-          startAngle={15}
-          endAngle={165}
-          radiusLg={620}
-          radiusMd={440}
-          radiusSm={280}
-          cardSizeLg={110}
-          cardSizeMd={90}
-          cardSizeSm={64}
-          overlapLg={-450}
-          overlapMd={-300}
-          overlapSm={-180}
-        >
-          {/* Content inside the arc curve */}
-          {/* Badge */}
-          <div className={cn(
-            "transition-all duration-700 delay-100",
-            heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          )}>
-            <RotatingHeroBadge stream={dbStreams?.find(s => s.status === 'open') ?? dbStreams?.[0] ?? null} />
-          </div>
-
-          {/* H1 */}
-          <h1 className={cn(
-            "max-w-4xl mx-auto text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold leading-[1.1] tracking-tight mb-6 transition-all duration-700 delay-200",
-            heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          )}>
-            Водительские права в Испании —
-            <br className="hidden sm:block" />
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent curso-gradient-x sm:mt-2 inline-block">
-              теория DGT с первого раза.
-            </span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className={cn(
-            "max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-zinc-400 mb-10 leading-relaxed transition-all duration-700 delay-300 font-medium",
-            heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          )}>
-            Живой курс на русском языке: объясняем ПДД, разбираем все 16 000 вопросов DGT и помогаем с документами — от Cita Previa до получения удостоверения.
-          </p>
-
-          {/* CTA buttons */}
-          <div className={cn(
-            "flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 transition-all duration-700 delay-[400ms]",
-            heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          )}>
-            <button
-              onClick={() => scrollToForm("hero")}
-              className="group relative w-full sm:w-auto px-7 py-3.5 rounded-2xl font-semibold text-base overflow-hidden transition-all active:scale-[0.97]"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 transition-all group-hover:brightness-110" />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-blue-400 to-cyan-400" />
-              <span className="relative flex items-center justify-center gap-2">
-                Подобрать тариф
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </button>
-            <button
-              onClick={scrollToHowItWorks}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-2xl font-semibold text-base border border-white/[0.1] bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all active:scale-[0.97] flex items-center justify-center gap-2 backdrop-blur-sm"
-            >
-              Как это работает?
-              <ArrowDown className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Trust pills */}
-          <div className={cn(
-            "flex flex-wrap items-center justify-center gap-2.5 mb-10 transition-all duration-700 delay-500",
-            heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          )}>
-            {TRUST_PILLS.map((pill) => (
-              <div
-                key={pill.text}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-xs text-zinc-400"
-              >
-                <pill.icon className="w-3.5 h-3.5 text-blue-400" />
-                {pill.text}
-              </div>
-            ))}
-          </div>
-
-          {/* Animated stats */}
-          <div className={cn(
-            "grid grid-cols-3 gap-5 max-w-sm mx-auto transition-all duration-700 delay-[600ms]",
-            heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          )}>
-            {HERO_STATS.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
-                  <AnimatedNumber value={s.value} suffix={s.suffix} />
-                </div>
-                <div className="text-[11px] sm:text-xs text-zinc-500 mt-1">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </ArcGalleryHero>
-
-        {/* Scroll indicator */}
-        <div className={cn(
-          "absolute bottom-8 left-1/2 -translate-x-1/2 transition-all duration-700 delay-[800ms] z-20",
-          heroReady ? "opacity-60" : "opacity-0"
-        )}>
-          <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5">
-            <div className="w-1.5 h-3 rounded-full bg-white/40 animate-bounce" />
-          </div>
-        </div>
-      </header>
-        </>
-      )}
 
       {/* ═══════════════════════════════════════════
           BLOCK 2: COMPARISON (Evolution)
@@ -1492,7 +1187,7 @@ const CourseLanding = () => {
               >
                 <Link
                   to={`/blog/${post.slug}`}
-                  className="group block rounded-2xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/12 transition-all duration-300"
+                  className="group block rounded-2xl bg-[#0c1523] hover:bg-[#0f1a2b] transition-all duration-300 overflow-hidden"
                 >
                   {/* Gradient top */}
                   <div className={cn("h-1.5 rounded-t-2xl bg-gradient-to-r", post.gradient)} />
