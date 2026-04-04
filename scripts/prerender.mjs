@@ -89,31 +89,39 @@ async function getLaunchOptions() {
     ],
   };
 
-  // Priority 1: full `puppeteer` package with bundled Chromium.
-  // The package may be installed but the browser not yet downloaded (e.g. first Vercel build
-  // before the cache is warm), so we verify the executable actually exists on disk.
+  // Priority 1: Vercel / serverless — always use @sparticuz/chromium.
+  // Regular Chrome binaries require system shared libraries (libnspr4, libnss3, etc.)
+  // that are absent in Vercel build containers. @sparticuz/chromium is statically
+  // linked and designed exactly for this environment.
+  if (hasVercelSignals || isHostedVercel) {
+    return getServerlessLaunchOptions(
+      "Vercel environment detected — using @sparticuz/chromium (statically linked)."
+    );
+  }
+
+  // Priority 2: full `puppeteer` package with bundled Chromium (local dev / cached CI).
+  // Verify the binary actually exists on disk before trusting it.
   if (puppeteer?.default) {
     try {
       const execPath = puppeteer.default.executablePath();
       if (execPath && existsSync(execPath)) {
-        return launchOptions; // bundled Chrome found — no executablePath override needed
+        return launchOptions;
       }
     } catch {
-      // executablePath() may throw when the browser hasn't been installed yet — fall through
+      // executablePath() throws when browser isn't installed — fall through
     }
   }
 
-  // Priority 2: system Chrome/Chromium (available in most CI images).
+  // Priority 3: system Chrome/Chromium (available in most CI images).
   const chromePath = findLocalChromeExecutable();
   if (chromePath) {
     launchOptions.executablePath = chromePath;
     return launchOptions;
   }
 
-  // Priority 3: @sparticuz/chromium — last resort for Lambda-like environments
-  // where neither puppeteer nor system Chrome is present.
+  // Priority 4: @sparticuz/chromium — last resort for non-Vercel Lambda-like envs.
   return getServerlessLaunchOptions(
-    "No bundled puppeteer or system Chrome found; falling back to @sparticuz/chromium."
+    "No bundled or system Chrome found; falling back to @sparticuz/chromium."
   );
 }
 
@@ -232,7 +240,13 @@ async function prerender() {
         await page.waitForFunction(
           () => {
             const root = document.querySelector("#root");
-            return root && root.textContent && root.textContent.trim().length > 60;
+            if (!root) return false;
+            // Accept if there is an h1 (hero title rendered) OR enough text content.
+            // Using a low threshold so @sparticuz/chromium doesn't need every pixel loaded.
+            return (
+              document.querySelector("h1") !== null ||
+              (root.textContent && root.textContent.trim().length > 30)
+            );
           },
           { timeout: 30000 }
         );
