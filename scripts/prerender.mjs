@@ -89,10 +89,18 @@ async function getLaunchOptions() {
     ],
   };
 
-  // Priority 1: full `puppeteer` package is installed and ships with bundled Chromium.
-  // This works everywhere (local, Vercel build, CI) — no executablePath needed.
+  // Priority 1: full `puppeteer` package with bundled Chromium.
+  // The package may be installed but the browser not yet downloaded (e.g. first Vercel build
+  // before the cache is warm), so we verify the executable actually exists on disk.
   if (puppeteer?.default) {
-    return launchOptions;
+    try {
+      const execPath = puppeteer.default.executablePath();
+      if (execPath && existsSync(execPath)) {
+        return launchOptions; // bundled Chrome found — no executablePath override needed
+      }
+    } catch {
+      // executablePath() may throw when the browser hasn't been installed yet — fall through
+    }
   }
 
   // Priority 2: system Chrome/Chromium (available in most CI images).
