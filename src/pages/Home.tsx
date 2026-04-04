@@ -1180,6 +1180,7 @@ const CourseLanding = () => {
             ].map((post, i) => (
               <motion.div
                 key={post.slug}
+                className="h-full"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
@@ -1187,12 +1188,12 @@ const CourseLanding = () => {
               >
                 <Link
                   to={`/blog/${post.slug}`}
-                  className="group block rounded-2xl bg-[#0c1523] hover:bg-[#0f1a2b] transition-all duration-300 overflow-hidden"
+                  className="group flex flex-col h-full rounded-2xl bg-[#0c1523] hover:bg-[#0f1a2b] transition-all duration-300 overflow-hidden"
                 >
                   {/* Gradient top */}
                   <div className={cn("h-1.5 rounded-t-2xl bg-gradient-to-r", post.gradient)} />
 
-                  <div className="p-5">
+                  <div className="flex flex-col flex-1 p-5">
                     {/* Meta */}
                     <div className="flex items-center gap-2 mb-3">
                       <span className={cn("text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full", post.accent)}>
@@ -1209,12 +1210,12 @@ const CourseLanding = () => {
                     </h3>
 
                     {/* Excerpt */}
-                    <p className="text-[12px] text-zinc-500 leading-relaxed line-clamp-3 mb-4">
+                    <p className="text-[12px] text-zinc-500 leading-relaxed line-clamp-3">
                       {post.excerpt}
                     </p>
 
-                    {/* Footer */}
-                    <div className="flex items-center justify-between pt-3 border-t border-white/5">
+                    {/* Footer — прибит к низу карточки */}
+                    <div className="flex items-center justify-between pt-3 mt-auto border-t border-white/5">
                       <span className="text-[11px] text-zinc-600">{post.date}</span>
                       <span className="flex items-center gap-1 text-[11px] text-zinc-500 group-hover:text-blue-400 transition-colors font-medium">
                         Читать <ArrowRight className="w-3 h-3" />
