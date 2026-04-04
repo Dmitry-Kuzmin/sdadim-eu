@@ -77,12 +77,6 @@ async function getServerlessLaunchOptions(reason) {
 }
 
 async function getLaunchOptions() {
-  if (isHostedVercel) {
-    return getServerlessLaunchOptions(
-      "Hosted Vercel prerender requires @sparticuz/chromium because browser downloads are unavailable during build."
-    );
-  }
-
   const launchOptions = {
     headless: true,
     args: [
@@ -95,30 +89,24 @@ async function getLaunchOptions() {
     ],
   };
 
-  if (isCI) {
-    const chromePath = findLocalChromeExecutable();
-    if (chromePath) {
-      launchOptions.executablePath = chromePath;
-      return launchOptions;
-    }
-
-    if (chromium) {
-      return getServerlessLaunchOptions(
-        "CI prerender could not find system Chrome and fell back to @sparticuz/chromium."
-      );
-    }
+  // Priority 1: full `puppeteer` package is installed and ships with bundled Chromium.
+  // This works everywhere (local, Vercel build, CI) — no executablePath needed.
+  if (puppeteer?.default) {
+    return launchOptions;
   }
 
-  if (!puppeteer?.default && puppeteerCore?.default) {
-    const chromePath = findLocalChromeExecutable();
-    if (!chromePath) {
-      throw new Error("Could not find a local Chrome or Chromium executable.");
-    }
-
+  // Priority 2: system Chrome/Chromium (available in most CI images).
+  const chromePath = findLocalChromeExecutable();
+  if (chromePath) {
     launchOptions.executablePath = chromePath;
+    return launchOptions;
   }
 
-  return launchOptions;
+  // Priority 3: @sparticuz/chromium — last resort for Lambda-like environments
+  // where neither puppeteer nor system Chrome is present.
+  return getServerlessLaunchOptions(
+    "No bundled puppeteer or system Chrome found; falling back to @sparticuz/chromium."
+  );
 }
 
 function getOutputPath(route) {
