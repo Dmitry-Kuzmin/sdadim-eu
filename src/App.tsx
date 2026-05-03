@@ -15,6 +15,7 @@ const ArticlePractical = lazy(() => import("@/pages/ArticlePractical"));
 const ArticleDictionary = lazy(() => import("@/pages/ArticleDictionary"));
 const ArticleCosts = lazy(() => import("@/pages/ArticleCosts"));
 const ArticleExamErrors = lazy(() => import("@/pages/ArticleExamErrors"));
+const ArticleStoryMalaga = lazy(() => import("@/pages/ArticleStoryMalaga"));
 
 function PageLoader() {
   return (
@@ -76,6 +77,7 @@ function LayoutContent() {
           <Route path="/blog/slovar-dgt" element={<ArticleDictionary />} />
           <Route path="/blog/tseny-na-prava" element={<ArticleCosts />} />
           <Route path="/blog/oshibki-ekzamen-vozhdeniya" element={<ArticleExamErrors />} />
+          <Route path="/blog/istoriya-sdachi-prav-malaga" element={<ArticleStoryMalaga />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

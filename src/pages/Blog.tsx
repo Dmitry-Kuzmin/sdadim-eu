@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { getBlogPosts, type BlogPost } from "@/lib/supabase";
+import { useNavigate } from "react-router-dom";
+import { blogPosts, type BlogPost } from "@/lib/blog-posts";
 import {
   BookOpen,
   Search,
@@ -11,45 +11,23 @@ import {
   GraduationCap,
   Lightbulb,
   MapPin,
+  Users,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SeoHead } from "@/components/seo/SeoHead";
 
 const CATEGORIES = [
-  { id: "all", label: "Все статьи", icon: Newspaper },
-  { id: "Гайды", label: "Гайды", icon: MapPin },
-  { id: "Подготовка", label: "Подготовка", icon: GraduationCap },
-  { id: "Советы", label: "Советы", icon: Lightbulb },
-  { id: "Актуально", label: "Актуально", icon: BookOpen },
+  { id: "all",              label: "Все статьи",     icon: Newspaper    },
+  { id: "Практика DGT",    label: "Практика DGT",   icon: GraduationCap },
+  { id: "Истории сдачи",   label: "Истории сдачи",  icon: Users         },
+  { id: "Подготовка к DGT",label: "Подготовка",     icon: Lightbulb     },
+  { id: "Финансы",         label: "Финансы",         icon: MapPin        },
+  { id: "Закон и Штрафы",  label: "Закон",           icon: BookOpen      },
+  { id: "Полезно",         label: "Полезно",         icon: Newspaper     },
 ];
-
-function PostSkeleton() {
-  return (
-    <div className="animate-pulse rounded-2xl bg-[#0c1523] p-6">
-      <div className="flex items-center gap-2 mb-4">
-        <div className="h-5 bg-white/5 rounded-full w-16" />
-        <div className="h-4 bg-white/5 rounded w-10" />
-      </div>
-      <div className="h-6 bg-white/5 rounded w-3/4 mb-2" />
-      <div className="h-6 bg-white/5 rounded w-1/2 mb-4" />
-      <div className="space-y-2">
-        <div className="h-3.5 bg-white/5 rounded w-full" />
-        <div className="h-3.5 bg-white/5 rounded w-5/6" />
-        <div className="h-3.5 bg-white/5 rounded w-4/6" />
-      </div>
-      <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/5">
-        <div className="h-3.5 bg-white/5 rounded w-24" />
-        <div className="h-3.5 bg-white/5 rounded w-14" />
-      </div>
-    </div>
-  );
-}
 
 export default function Blog() {
   const navigate = useNavigate();
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
 
@@ -57,14 +35,7 @@ export default function Blog() {
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
-  useEffect(() => {
-    getBlogPosts()
-      .then(setPosts)
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
-  }, []);
-
-  const filtered = posts.filter((p) => {
+  const filtered = blogPosts.filter((p) => {
     const matchSearch =
       searchQuery.trim() === "" ||
       p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -74,7 +45,7 @@ export default function Blog() {
   });
 
   const getCategoryCount = (catId: string) =>
-    catId === "all" ? posts.length : posts.filter((p) => p.category === catId).length;
+    catId === "all" ? blogPosts.length : blogPosts.filter((p) => p.category === catId).length;
 
   return (
     <div className="min-h-screen bg-[#050B14]">
@@ -164,20 +135,8 @@ export default function Blog() {
               </kbd>
             </div>
 
-            {/* States */}
-            {error && (
-              <div className="text-center py-16">
-                <p className="text-zinc-500 text-sm">Не удалось загрузить статьи.</p>
-              </div>
-            )}
-
-            {loading && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {Array.from({ length: 6 }).map((_, i) => <PostSkeleton key={i} />)}
-              </div>
-            )}
-
-            {!loading && !error && filtered.length === 0 && (
+            {/* Empty state */}
+            {filtered.length === 0 && (
               <div className="text-center py-16">
                 <BookOpen className="w-12 h-12 mx-auto mb-4 text-zinc-700" />
                 <p className="text-zinc-400 font-semibold mb-1">Статьи не найдены</p>
@@ -186,12 +145,12 @@ export default function Blog() {
             )}
 
             {/* Grid */}
-            {!loading && !error && filtered.length > 0 && (
+            {filtered.length > 0 && (
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {filtered.map((post) => (
                     <article
-                      key={post.id}
+                      key={post.slug}
                       className="group flex flex-col cursor-pointer rounded-2xl bg-[#0c1523] hover:bg-[#0f1a2b] transition-all duration-300 overflow-hidden"
                       onClick={() => navigate(`/blog/${post.slug}`)}
                     >

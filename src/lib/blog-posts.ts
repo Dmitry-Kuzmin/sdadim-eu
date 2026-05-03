@@ -1,0 +1,87 @@
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  cover_image: string | null;
+  published_at: string;
+  category: string;
+  reading_time: number;
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "oshibki-ekzamen-vozhdeniya",
+    title: "Официальный перечень ошибок DGT: что приводит к провалу на практике",
+    excerpt: "Официальный перечень ошибок DGT на русском: 14 разделов, 3 уровня тяжести, советы по каждой ситуации.",
+    cover_image: "/assets/blog/oshibki-ekzamen-vozhdeniya.jpg",
+    published_at: "2026-04-01T10:00:00Z",
+    category: "Практика DGT",
+    reading_time: 18,
+  },
+  {
+    slug: "istoriya-sdachi-prav-malaga",
+    title: "Как я сдавала практику по вождению в Испании: честная история из Малаги",
+    excerpt: "Теория онлайн с ИИ, 10 уроков за 5 дней, ноль ошибок на экзамене DGT. 739 евро и полгода времени — рассказываю всё как есть.",
+    cover_image: "/assets/blog/prakticheskiy-ekzamen.jpg",
+    published_at: "2025-04-28T10:00:00Z",
+    category: "Истории сдачи",
+    reading_time: 8,
+  },
+  {
+    slug: "tseny-na-prava",
+    title: "Сколько стоит получить права в Испании? (Калькулятор 2026)",
+    excerpt: "Полный разбор цен на получение водительских прав в Испании в 2026 году. Пошлина DGT 94.05€, автошколы, скрытые платежи и интерактивный калькулятор.",
+    cover_image: "/assets/blog/tseny-na-prava.jpg",
+    published_at: "2025-04-05T10:00:00Z",
+    category: "Финансы",
+    reading_time: 18,
+  },
+  {
+    slug: "slovar-dgt",
+    title: "Словарик будущего водителя в Испании: термины DGT на русском",
+    excerpt: "Официальный перечень ошибок DGT на русском: 14 разделов, 3 уровня тяжести, советы по каждой ситуации.",
+    cover_image: "/assets/blog/slovar-dgt.jpg",
+    published_at: "2025-04-04T10:00:00Z",
+    category: "Полезно",
+    reading_time: 5,
+  },
+  {
+    slug: "prakticheskiy-ekzamen",
+    title: "Как сдать практический экзамен по вождению в Испании с первого раза",
+    excerpt: "Сдаем практический экзамен DGT с первого раза: подготовка к каверзным вопросам экзаменатора, ловушки на маршруте и психология успешной сдачи (2026).",
+    cover_image: "/assets/blog/prakticheskiy-ekzamen.jpg",
+    published_at: "2025-04-03T10:00:00Z",
+    category: "Практика DGT",
+    reading_time: 10,
+  },
+  {
+    slug: "poddelnyye-prava-ispaniya",
+    title: "Поддельные права в Испании: тюрьма, штрафы и легальный путь",
+    excerpt: "Что грозит за покупку фейковых прав в Испании? Огромные штрафы до 24 месяцев, срок до 3 лет и отказ страховой. Как сдать легально.",
+    cover_image: "/assets/blog/poddelnyye-prava-ispaniya.jpg",
+    published_at: "2025-04-02T10:00:00Z",
+    category: "Закон и Штрафы",
+    reading_time: 7,
+  },
+  {
+    slug: "ekonomichnoe-vozhdenie",
+    title: "Экономичное вождение: 13 техник для снижения расхода топлива",
+    excerpt: "Как снизить расход на 20–30%: плавный разгон, чтение дороги, инерция, давление в шинах и разбор мифов про нейтралку. Включает вопросы темы DGT.",
+    cover_image: "/assets/blog/ekonomichnoe-vozhdenie.jpg",
+    published_at: "2025-04-01T10:00:00Z",
+    category: "Подготовка к DGT",
+    reading_time: 9,
+  },
+];
+
+export function getBlogPost(slug: string): BlogPost | null {
+  return blogPosts.find((p) => p.slug === slug) ?? null;
+}
+
+export function getRelatedPosts(slug: string, limit = 2): BlogPost[] {
+  const current = getBlogPost(slug);
+  if (!current) return blogPosts.slice(0, limit);
+  const sameCategory = blogPosts.filter((p) => p.slug !== slug && p.category === current.category);
+  const others = blogPosts.filter((p) => p.slug !== slug && p.category !== current.category);
+  return [...sameCategory, ...others].slice(0, limit);
+}

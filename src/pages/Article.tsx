@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { getBlogPost, getBlogPosts, type BlogPost } from "@/lib/supabase";
+import { getBlogPost, getRelatedPosts, type BlogPost } from "@/lib/blog-posts";
 import {
   Clock,
   ArrowLeft,
@@ -143,14 +143,9 @@ export default function Article() {
   useEffect(() => {
     if (!slug) return;
     window.scrollTo({ top: 0, behavior: "auto" });
-    setLoading(true);
-    Promise.all([
-      getBlogPost(slug),
-      getBlogPosts(),
-    ]).then(([p, all]) => {
-      setPost(p);
-      setRelated(all.filter((a) => a.slug !== slug).slice(0, 2));
-    }).finally(() => setLoading(false));
+    setPost(getBlogPost(slug));
+    setRelated(getRelatedPosts(slug));
+    setLoading(false);
   }, [slug]);
 
   useSEOMeta(post);
